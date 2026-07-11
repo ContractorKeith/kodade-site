@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ködade - every agent, one window</title>
+    <meta
+      name="description"
+      content="ködade orchestrates the agent CLIs you already use in one fast, native window. Your shell. Your prompt. Your PATH."
+    >
+    <meta name="theme-color" content="#0F1012">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary">
+      <a class="brand" href="#" aria-label="ködade home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </span>
+        <span class="wordmark">ködade</span>
+      </a>
+      <nav class="nav-links" aria-label="Site">
+        <a href="#agents">agents</a>
+        <a href="#proof">proof</a>
+        <a class="nav-cta" href="#download">Download for macOS</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">agentic development environment</p>
+          <h1 id="hero-title">two döts.<br>every agent.</h1>
+          <p class="lede">
+            ködade orchestrates the agent CLIs you already pay for in one fast,
+            native window. Your shell. Your prompt. Your PATH.
+          </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#download">Download for macOS</a>
+            <span class="meta-line">Apple Silicon · lightweight native core</span>
+          </div>
+        </div>
+
+        <div class="product-shell" aria-label="ködade product preview">
+          <div class="window-bar">
+            <span class="traffic traffic-red"></span>
+            <span class="traffic traffic-yellow"></span>
+            <span class="traffic traffic-green"></span>
+            <span class="window-title">ködade - ~/dev/rocket</span>
+          </div>
+          <div class="workspace-preview">
+            <aside class="project-rail" aria-label="Projects">
+              <p class="rail-label">PROJECTS</p>
+              <div class="rail-row active">rocket</div>
+              <div class="rail-row nested running"><span></span>claude · main</div>
+              <div class="rail-row nested"><span></span>codex · feature</div>
+              <div class="rail-row">website</div>
+              <div class="rail-row">dotfiles</div>
+            </aside>
+            <section class="terminal-pane" aria-label="Terminal">
+              <p><span class="accent-text">~/dev/rocket</span> <span>on</span> main</p>
+              <p><span class="prompt">❯</span> claude</p>
+              <p class="muted">╭─ Claude Code v2.4</p>
+              <p class="muted">│  ~/dev/rocket · sonnet</p>
+              <p class="muted">╰─ ready</p>
+              <p>&gt; fix the flaky retry test</p>
+              <p class="dim">● Reading tests/retry.test.ts</p>
+              <p class="dim">● Editing src/retry.ts</p>
+              <p><span class="prompt">❯</span> <span class="cursor"></span></p>
+            </section>
+            <aside class="file-rail" aria-label="Files">
+              <p class="rail-label">FILES</p>
+              <div class="file-row">src</div>
+              <div class="file-row active">retry.ts <span>•</span></div>
+              <div class="file-row">queue.ts</div>
+              <div class="file-row">index.ts</div>
+              <div class="file-row">tests</div>
+              <div class="file-row">retry.test.ts</div>
+            </aside>
+            <section class="editor-pane" aria-label="Editor">
+              <p class="muted">// src/retry.ts</p>
+              <p><span class="muted">export function</span> retry(fn, opts) {</p>
+              <p>&nbsp;&nbsp;<span class="muted">const</span> max = opts.max ?? <span class="accent-text">3</span>;</p>
+              <p>&nbsp;&nbsp;<span class="muted">let</span> delay = opts.base ?? <span class="accent-text">250</span>;</p>
+              <p>&nbsp;&nbsp;<span class="muted">for</span> (<span class="muted">let</span> i = <span class="accent-text">0</span>; i &lt; max; i++) {</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="muted">try</span> { <span class="muted">return await</span> fn(); }</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="muted">catch</span> (e) { <span class="muted">await</span> sleep(delay); }</p>
+              <p>&nbsp;&nbsp;}</p>
+              <p>}</p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="agent-strip" id="agents" aria-labelledby="agents-title">
+        <div>
+          <p class="section-kicker">your subscriptions, one window</p>
+          <h2 id="agents-title">Bring the agents you already use.</h2>
+        </div>
+        <div class="agent-list" aria-label="Supported agent CLIs">
+          <span>Claude Code</span>
+          <span>Codex</span>
+          <span>Grok</span>
+          <span>OpenCode</span>
+          <span>Ollama</span>
+        </div>
+      </section>
+
+      <section class="proof" id="proof" aria-label="Product proof points">
+        <article>
+          <h2>your real shell</h2>
+          <p>Login shell, prompt, PATH, env, aliases. Nothing proxied, nothing faked.</p>
+        </article>
+        <article>
+          <h2>any agent</h2>
+          <p>Run each CLI the way it expects to run. ködade gives the workspace.</p>
+        </article>
+        <article>
+          <h2>15 MB</h2>
+          <p>Native Tauri core, fast launch, low memory, no Electron surface area.</p>
+        </article>
+      </section>
+
+      <section class="download" id="download" aria-labelledby="download-title">
+        <p class="section-kicker">macOS first</p>
+        <h2 id="download-title">A quiet window for loud tools.</h2>
+        <p>
+          The public download will land here when the first macOS build is ready.
+          Until then, this page is the brand and landing surface for ködade.
+        </p>
+        <span class="button-primary download-disabled" aria-disabled="true">Download for macOS</span>
+      </section>
+    </main>
+  </body>
+</html>
