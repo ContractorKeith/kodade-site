@@ -99,33 +99,107 @@ a {
 }
 
 .wordmark {
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 19px;
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Pixel-umlaut o (mock lines 79-88): a hidden "ö" reserves the slot width, a
+   positioned "o" sits under two 3px squares — left amber, right paper. */
+.wm-o {
+  display: inline-block;
+  position: relative;
+}
+.wm-o-space {
+  visibility: hidden;
+}
+.wm-o-body {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.wm-dot {
+  height: 3px;
+  position: absolute;
+  top: 4px;
+  width: 3px;
+}
+.wm-dot-l {
+  background: var(--accent);
+  left: 2px;
+}
+.wm-dot-r {
+  background: var(--paper);
+  left: 7px;
 }
 
 .nav-links {
   align-items: center;
   display: flex;
-  gap: 26px;
+  gap: 28px;
   font-size: 13px;
   font-weight: 600;
 }
 
 .nav-links a {
   color: var(--ink-300);
+  position: relative;
   text-decoration: none;
 }
 
-.nav-links a:hover {
+/* Nav-link hover: a subtle amber-dither underlay fades the text to paper --
+   dither texture on hover, never a smooth color wash (SITE-PLAN §1). */
+.nav-links a:not(.nav-cta)::before {
+  background: conic-gradient(
+    rgba(var(--dither-amber), 0.5) 25%,
+    transparent 0 50%,
+    rgba(var(--dither-amber), 0.5) 0 75%,
+    transparent 0
+  );
+  background-size: 2px 2px;
+  bottom: -3px;
+  content: "";
+  left: -3px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  z-index: -1;
+}
+.nav-links a:not(.nav-cta):hover {
   color: var(--paper);
+}
+.nav-links a:not(.nav-cta):hover::before {
+  opacity: 1;
 }
 
 .nav-links .nav-cta {
   background: var(--accent);
   color: var(--ink-950);
-  padding: 8px 14px;
+  overflow: hidden;
+  padding: 8px 16px;
+  position: relative;
+}
+/* CTA hover: a paper-dither texture sweeps over the amber (no smooth fade). */
+.cta-dither::after {
+  background: conic-gradient(
+    rgba(var(--dither-paper), 0.55) 25%,
+    transparent 0 50%,
+    rgba(var(--dither-paper), 0.55) 0 75%,
+    transparent 0
+  );
+  background-size: 3px 3px;
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.cta-dither:hover::after {
+  opacity: 1;
 }
 
 .hero {
@@ -133,12 +207,129 @@ a {
   color: var(--paper);
   overflow: hidden;
   padding: 58px 48px 34px;
+  position: relative;
+}
+
+/* Decorative layer holding halos, wedges, and stair ornaments. Spans the top
+   of the hero; every child is pointer-events:none via its utility class. */
+.hero-fx {
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Dither halo behind the headline -- three stacked layers, denser than the
+   mock so the texture reads at arm's length (SITE-PLAN §1 "denser fields").
+   All anchored to the top of the hero. */
+.hero-halo-amber,
+.hero-halo-paper,
+.hero-halo-coarse {
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.hero-halo-amber {
+  --dither-cell: 5px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: 0.24; /* raised above mock's .20 */
+  --dither-mask: radial-gradient(ellipse 72% 74% at 50% 0%, #000, transparent 74%);
+  height: 560px;
+}
+.hero-halo-paper {
+  --dither-cell: 3px;
+  --dither-rgb: var(--dither-paper);
+  --dither-alpha: 0.1; /* slightly above mock's .08 */
+  --dither-mask: radial-gradient(ellipse 45% 50% at 50% 0%, #000, transparent 70%);
+  height: 560px;
+}
+/* New coarse 8px amber layer -- low alpha, wide spread; carries the texture
+   at distance without muddying the headline. */
+.hero-halo-coarse {
+  --dither-cell: 8px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: 0.12;
+  --dither-mask: radial-gradient(ellipse 82% 66% at 50% 6%, #000, transparent 78%);
+  height: 520px;
+}
+
+/* Amber corner wedges, left + right of the hero (mock lines 44-45). */
+.hero-wedge-l,
+.hero-wedge-r {
+  --dither-cell: 6px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: 0.28;
+  height: 420px;
+}
+.hero-wedge-l {
+  --dither-mask: radial-gradient(ellipse 100% 70% at 0% 50%, #000, transparent 75%);
+  left: 0;
+  top: 120px;
+  width: 300px;
+}
+.hero-wedge-r {
+  --dither-mask: radial-gradient(ellipse 100% 70% at 100% 40%, #000, transparent 75%);
+  height: 460px;
+  right: 0;
+  top: 60px;
+  width: 340px;
+}
+
+/* Pixel stair scatter ornaments (mock lines 47-70). */
+.stair-tr {
+  position: absolute;
+  right: 56px;
+  top: 80px;
+}
+.stair-ml {
+  left: 44px;
+  position: absolute;
+  top: 280px;
 }
 
 .hero-copy {
   margin: 0 auto 42px;
   max-width: 820px;
+  position: relative; /* lift copy above .hero-fx */
   text-align: center;
+  z-index: 1;
+}
+
+/* Screen-reader-only text (keeps the accessible "döts" word for the aria-hidden
+   decorative treatment). */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Treatment B -- dither-textured accent word "döts": real JetBrains Mono bold
+   filled with an amber Bayer checker via background-clip:text. Umlaut dots are
+   the natural glyph dots, so the word reads instantly at any size. */
+.dots-accent {
+  background-image: conic-gradient(
+    rgba(var(--dither-amber), 1) 25%,
+    rgba(var(--dither-amber), 0.4) 0 50%,
+    rgba(var(--dither-amber), 1) 0 75%,
+    rgba(var(--dither-amber), 0.4) 0
+  );
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Fallback: where background-clip:text is unsupported, show a solid amber word. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .dots-accent {
+    background: none;
+    color: var(--accent);
+  }
 }
 
 .eyebrow,
@@ -159,9 +350,9 @@ p {
 
 h1 {
   font-family: var(--mono);
-  font-size: 58px;
+  font-size: clamp(34px, 8vw, 58px);
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: -0.03em;
   line-height: 1.12;
   margin-bottom: 20px;
 }
@@ -560,10 +751,6 @@ h1 {
     padding: 42px 22px 26px;
   }
 
-  h1 {
-    font-size: 42px;
-  }
-
   .lede {
     font-size: 16px;
   }
@@ -616,6 +803,29 @@ h1 {
   }
 }
 
+/* Below ~700px: hide the stair ornaments and corner wedges, and soften the
+   halo so texture never crowds the copy at small sizes (SITE-PLAN §4). */
+@media (max-width: 700px) {
+  .stair-tr,
+  .stair-ml,
+  .hero-wedge-l,
+  .hero-wedge-r {
+    display: none;
+  }
+
+  .hero-halo-amber {
+    --dither-alpha: 0.18;
+    height: 380px;
+  }
+  .hero-halo-paper {
+    height: 380px;
+  }
+  .hero-halo-coarse {
+    --dither-alpha: 0.09;
+    height: 360px;
+  }
+}
+
 @media (max-width: 560px) {
   .nav-links {
     font-size: 12px;
@@ -623,10 +833,6 @@ h1 {
 
   .nav-links .nav-cta {
     padding: 7px 10px;
-  }
-
-  h1 {
-    font-size: 36px;
   }
 
   .button-primary {

@@ -19,27 +19,62 @@
           <span></span>
           <span></span>
         </span>
-        <span class="wordmark">ködade</span>
+        <span class="wordmark" aria-hidden="true">k<span class="wm-o"><span class="wm-o-space">ö</span><span class="wm-o-body">o</span><span class="wm-dot wm-dot-l"></span><span class="wm-dot wm-dot-r"></span></span>dade</span>
       </a>
       <nav class="nav-links" aria-label="Site">
-        <a href="#agents">agents</a>
-        <a href="#proof">proof</a>
-        <a class="nav-cta" href="#download">Download for macOS</a>
+        <a href="#docs">docs</a>
+        <a href="#github">github</a>
+        <a class="nav-cta pixel-clip" href="#download">Download for macOS</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
+        <!-- Dither halo + ornaments behind the headline (SITE-PLAN §1, pushed
+             denser than the 4a mock). All decorative, all pointer-events:none. -->
+        <div class="hero-fx" aria-hidden="true">
+          <!-- amber halo (5px), paper halo (3px tighter), coarse 8px amber layer -->
+          <div class="dither-field hero-halo-amber"></div>
+          <div class="dither-field hero-halo-paper"></div>
+          <div class="dither-field hero-halo-coarse"></div>
+          <!-- amber corner wedges, left + right (mock lines 44-45) -->
+          <div class="dither-field hero-wedge-l"></div>
+          <div class="dither-field hero-wedge-r"></div>
+          <!-- pixel stair ornaments: top-right 6-col/14px, mid-left 4-col/13px -->
+          <div class="pixel-stair stair-tr">
+            <i class="cell-amber" style="grid-column:5;grid-row:1"></i>
+            <i class="cell-amber" style="grid-column:6;grid-row:1;opacity:.45"></i>
+            <i class="cell-amber" style="grid-column:4;grid-row:2;opacity:.85"></i>
+            <i class="cell-amber" style="grid-column:6;grid-row:2;opacity:.3"></i>
+            <i class="cell-amber" style="grid-column:3;grid-row:3;opacity:.65"></i>
+            <i class="cell-paper" style="grid-column:5;grid-row:3;opacity:.6"></i>
+            <i class="cell-amber" style="grid-column:2;grid-row:4;opacity:.5"></i>
+            <i class="cell-amber" style="grid-column:4;grid-row:4;opacity:.25"></i>
+            <i class="cell-amber" style="grid-column:1;grid-row:5;opacity:.35"></i>
+            <i class="cell-paper" style="grid-column:3;grid-row:5;opacity:.3"></i>
+            <i class="cell-amber" style="grid-column:2;grid-row:6;opacity:.2"></i>
+          </div>
+          <div class="pixel-stair stair-ml" style="--stair-cell:13px;--stair-cols:4">
+            <i class="cell-amber" style="grid-column:1;grid-row:1;opacity:.9"></i>
+            <i class="cell-amber" style="grid-column:3;grid-row:1;opacity:.35"></i>
+            <i class="cell-amber" style="grid-column:2;grid-row:2;opacity:.7"></i>
+            <i class="cell-paper" style="grid-column:4;grid-row:2;opacity:.4"></i>
+            <i class="cell-paper" style="grid-column:1;grid-row:3;opacity:.35"></i>
+            <i class="cell-amber" style="grid-column:3;grid-row:3;opacity:.55"></i>
+            <i class="cell-amber" style="grid-column:2;grid-row:4;opacity:.3"></i>
+          </div>
+        </div>
+
         <div class="hero-copy">
           <p class="eyebrow">agentic development environment</p>
-          <h1 id="hero-title">two döts.<br>every agent.</h1>
+          <h1 id="hero-title">two <span class="dots-accent" aria-hidden="true">döts</span><span class="visually-hidden">döts</span>.<br>one window.</h1>
           <p class="lede">
             ködade orchestrates the agent CLIs you already pay for in one fast,
             native window. Your shell. Your prompt. Your PATH.
           </p>
           <div class="hero-actions">
-            <a class="button-primary" href="#download">Download for macOS</a>
-            <span class="meta-line">Apple Silicon · lightweight native core</span>
+            <a class="button-primary pixel-clip cta-dither" href="#download">Download for macOS</a>
+            <span class="meta-line">15 MB · Apple Silicon · free</span>
           </div>
         </div>
 
