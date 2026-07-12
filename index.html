@@ -138,19 +138,8 @@
         </div>
       </section>
 
-      <section class="agent-strip" id="agents" aria-labelledby="agents-title">
-        <div>
-          <p class="section-kicker">your subscriptions, one window</p>
-          <h2 id="agents-title">Bring the agents you already use.</h2>
-        </div>
-        <div class="agent-list" aria-label="Supported agent CLIs">
-          <span>Claude Code</span>
-          <span>Codex</span>
-          <span>Grok</span>
-          <span>OpenCode</span>
-          <span>Ollama</span>
-        </div>
-      </section>
+      <!-- Halftone ramp seam: transition out of the hero/mock region (SITE-PLAN §2.4). -->
+      <div class="halftone-ramp seam-out-of-hero" aria-hidden="true"></div>
 
       <section class="proof" id="proof" aria-label="Product proof points">
         <article>
@@ -167,15 +156,61 @@
         </article>
       </section>
 
+      <section class="agent-strip" id="agents" aria-labelledby="agents-title">
+        <div>
+          <p class="section-kicker">your subscriptions, one window</p>
+          <h2 id="agents-title">Bring the agents you already use.</h2>
+        </div>
+        <div class="agent-list" aria-label="Supported agent CLIs">
+          <span>Claude Code</span>
+          <span>Codex</span>
+          <span>Grok</span>
+          <span>OpenCode</span>
+          <span>Ollama</span>
+        </div>
+      </section>
+
+      <!-- Pixel-stair seam: quiet decorative band before the download section
+           (SITE-PLAN §2.7). Sparse scattered cells, not a solid stripe. -->
+      <div class="stair-seam" aria-hidden="true">
+        <div class="pixel-stair" style="--stair-cell:10px;--stair-cols:48">
+          <i class="cell-amber" style="grid-column:3;grid-row:1;opacity:.5"></i>
+          <i class="cell-amber" style="grid-column:4;grid-row:1;opacity:.2"></i>
+          <i class="cell-paper" style="grid-column:9;grid-row:1;opacity:.18"></i>
+          <i class="cell-amber" style="grid-column:14;grid-row:1;opacity:.35"></i>
+          <i class="cell-amber" style="grid-column:15;grid-row:1;opacity:.6"></i>
+          <i class="cell-amber" style="grid-column:21;grid-row:1;opacity:.22"></i>
+          <i class="cell-paper" style="grid-column:26;grid-row:1;opacity:.15"></i>
+          <i class="cell-amber" style="grid-column:31;grid-row:1;opacity:.4"></i>
+          <i class="cell-amber" style="grid-column:32;grid-row:1;opacity:.65"></i>
+          <i class="cell-amber" style="grid-column:33;grid-row:1;opacity:.25"></i>
+          <i class="cell-amber" style="grid-column:38;grid-row:1;opacity:.3"></i>
+          <i class="cell-paper" style="grid-column:43;grid-row:1;opacity:.2"></i>
+          <i class="cell-amber" style="grid-column:46;grid-row:1;opacity:.45"></i>
+        </div>
+      </div>
+
       <section class="download" id="download" aria-labelledby="download-title">
-        <p class="section-kicker">macOS first</p>
+        <div class="dither-field download-dither" aria-hidden="true"></div>
+        <p class="section-kicker">macos first</p>
         <h2 id="download-title">A quiet window for loud tools.</h2>
         <p>
           The public download will land here when the first macOS build is ready.
           Until then, this page is the brand and landing surface for ködade.
         </p>
-        <span class="button-primary download-disabled" aria-disabled="true">Download for macOS</span>
+        <div class="hero-actions download-actions">
+          <a class="button-primary pixel-clip cta-dither download-disabled" href="#download" aria-disabled="true">Download for macOS</a>
+          <span class="meta-line">15 MB · Apple Silicon · free</span>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+      <p>© 2026 ködade</p>
+    </footer>
   </body>
 </html>

@@ -54,8 +54,8 @@ html {
 
 body {
   margin: 0;
-  color: var(--ink-950);
-  background: var(--paper);
+  color: var(--paper);
+  background: var(--ink-950);
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.55;
@@ -614,18 +614,28 @@ h1 {
   width: 7px;
 }
 
+/* Halftone ramp seam out of the hero/mock region (SITE-PLAN §2.4). Negative
+   margin pulls it up under the mock's glow overhang so the seam reads as the
+   hero's own fade-out rather than a gap before the proof grid. */
+.seam-out-of-hero {
+  margin-top: -32px;
+  position: relative;
+  z-index: 1;
+}
+
 .agent-strip {
   align-items: center;
-  background: var(--paper);
-  border-bottom: 1px solid #dedbd4;
+  background: var(--ink-950);
+  color: var(--paper);
   display: grid;
   gap: 28px;
   grid-template-columns: minmax(220px, 0.7fr) 1fr;
-  padding: 42px 48px;
+  padding: 48px 48px 56px;
 }
 
 .agent-strip h2,
 .download h2 {
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 26px;
   letter-spacing: 0;
@@ -641,54 +651,108 @@ h1 {
 }
 
 .agent-list span {
-  background: var(--paper-raised);
-  border: 1px solid #dedbd4;
-  color: var(--ink-950);
+  background: var(--ink-900);
+  border: 1px solid var(--mock-hairline);
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 13px;
   font-weight: 700;
   padding: 10px 12px;
 }
 
+/* Proof grid (mock lines 180-194): 1px #24262A gutters via the grid-gap trick
+   -- the grid background paints the gutter color, each cell paints ink-950
+   over it, so only the 1px seams between/around cells show the gutter. */
 .proof {
+  background: var(--mock-hairline);
   display: grid;
+  gap: 1px;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .proof article {
-  background: var(--paper);
-  border-bottom: 1px solid #dedbd4;
-  border-right: 1px solid #dedbd4;
+  background: var(--ink-950);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   min-height: 190px;
   padding: 36px 48px;
 }
 
-.proof article:last-child {
-  border-right: 0;
-}
-
 .proof h2 {
+  color: var(--paper);
   font-family: var(--mono);
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: 0;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 .proof p,
 .download p {
-  color: var(--ink-600);
+  color: var(--ink-500);
+  font-size: 13px;
+  line-height: 1.55;
   margin-bottom: 0;
 }
 
+/* Pixel-stair seam before the download section (SITE-PLAN §2.7): sparse,
+   decorative, low-opacity scatter -- a quiet seam, not a stripe. */
+.stair-seam {
+  overflow: hidden;
+  padding: 18px 0;
+}
+
 .download {
-  background: var(--paper);
+  background: var(--ink-950);
+  color: var(--paper);
+  overflow: hidden;
   padding: 54px 48px 64px;
+  position: relative;
   text-align: center;
 }
 
+/* Very low-alpha amber field behind the download copy for depth (SITE-PLAN
+   §2.5) -- a1/a2 steps only, legibility comes first. */
+.download-dither {
+  --dither-cell: 6px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: var(--dither-a2);
+  --dither-mask: radial-gradient(ellipse 70% 80% at 50% 30%, #000, transparent 75%);
+  inset: 0;
+  position: absolute;
+}
+
+.download > :not(.download-dither) {
+  position: relative;
+  z-index: 1;
+}
+
 .download p {
+  color: var(--ink-500);
   margin: 16px auto 26px;
   max-width: 560px;
+}
+
+.download-actions {
+  justify-content: center;
+}
+
+.site-footer {
+  align-items: center;
+  background: var(--ink-950);
+  border-top: 1px solid var(--mock-hairline);
+  color: var(--ink-600);
+  display: flex;
+  font-family: var(--mono);
+  font-size: 12px;
+  gap: 10px;
+  justify-content: center;
+  padding: 22px 48px;
+}
+
+.site-footer p {
+  margin: 0;
 }
 
 /* ==========================================================================
