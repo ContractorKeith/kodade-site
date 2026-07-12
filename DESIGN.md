@@ -112,14 +112,19 @@ Scale (site/docs): 15 px body, 1.55 line-height; headings 1.25 ratio; UI chrome
 - Verbs first, lowercase UI labels where macOS allows ("open project", "new session").
 - Never overpromise agents: ködade *orchestrates* CLIs; the CLIs do the work.
 - No emoji, no exclamation marks, no "blazingly".
-- The one allowed flourish: umlaut wordplay in headlines ("two dots. every agent.").
+- The one allowed flourish: umlaut wordplay in headlines. "two döts." is the
+  keeper; its second line is OPEN — "every agent." is rejected.
 
 ---
 
 ## 6. Landing page (kodade.com)
 
-- Single page (PLAN.md: site is a landing page only). Ink-dark hero, `--paper`
-  sections below.
+- Single page (PLAN.md: site is a landing page only). **All-dark on `--ink-950`**
+  — DECIDED 2026-07-11, supersedes the earlier dark-hero/paper-sections split.
+- Visual direction — DECIDED: **pixelation + dithering** (`Ködade Brand.dc.html`
+  § 4a, pushed further). Bayer dither fields, halftone ramps as section seams,
+  pixel stair ornaments, squared corners, hard offset shadows, pixel-rendered
+  headline accent. Build spec lives in SITE-PLAN.md.
 - Hero = the product: a real screenshot/screencast of the 4-pane window with a
   live prompt, not abstract 3D blobs.
 - Structure: hero + one-line pitch → "your subscriptions, one window" (provider
@@ -131,7 +136,9 @@ Scale (site/docs): 15 px body, 1.55 line-height; headings 1.25 ratio; UI chrome
 
 ## 7. Don'ts
 
-- No gradients on brand surfaces; no glassmorphism.
+- No *smooth* gradients on brand surfaces; no glassmorphism. Dither fields,
+  halftone ramps, and pixel patterns (CSS-generated, hard-edged) are the one
+  sanctioned texture — they are the brand's texture language, not decoration.
 - Never restyle or recolor another provider's logo.
 - Never use theme colors in marketing, or brand accent inside themed UI.
 - No mascots. The dots are the personality.
