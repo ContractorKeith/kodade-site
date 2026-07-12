@@ -981,3 +981,49 @@ h1 {
     font-size: 11px;
   }
 }
+
+/* ==========================================================================
+   Motion pass (SITE-PLAN §3) -- cursor blink, session-dot pulse, dither
+   shimmer. Compositor-cheap only: opacity + background-position, nothing
+   layout/paint-heavy. Entirely gated behind prefers-reduced-motion so the
+   no-preference branch is the only place motion exists; the default (no
+   media query matched) state above is the fully-static, reduced-motion page.
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  /* Block cursor blink -- 1s step-end, on/off like a real terminal caret. */
+  .cursor {
+    animation: cursor-blink 1s step-end infinite;
+  }
+
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }
+
+  /* Session dot pulse -- "claude · main" running indicator (DESIGN.md §4.6:
+     state is visible, quiet). Slow ease-in-out breathing between full and
+     dim, never a hard blink -- reads as alive, not as an alert. */
+  .rail-row.running span {
+    animation: session-pulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes session-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* Dither shimmer -- one halo layer only (the coarse 8px field; it has the
+     most visible cells so the drift reads at all without calling attention
+     to itself). Its --dither-cell is 8px, so drifting exactly one whole cell
+     (8px) over 32s makes the loop point invisible -- the pattern is back to
+     pixel-identical alignment when it restarts. Linear, no easing, so the
+     drift never accelerates into "noticeable." */
+  .hero-halo-coarse {
+    animation: dither-shimmer 32s linear infinite;
+  }
+
+  @keyframes dither-shimmer {
+    from { background-position: 0 0; }
+    to { background-position: 8px 8px; }
+  }
+}
