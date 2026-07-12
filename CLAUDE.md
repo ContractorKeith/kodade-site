@@ -17,6 +17,8 @@ python3 -m http.server 8000   # then http://localhost:8000
 
 ## Architecture
 - `index.html` + `styles.css` — the entire site. Keep it that way.
+- `fonts/jetbrains-mono-latin.woff2` — self-hosted JetBrains Mono (latin subset,
+  variable weight, ~31 KB). The only binary asset; no external font requests.
 - `DESIGN.md` — brand + design reference. **Read it before touching copy or CSS**;
   it is the source of truth for tokens, type, voice, and page structure.
 - `Ködade Brand.dc.html` — logo exploration archive (decision landed: double-dot

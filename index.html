@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ködade - every agent, one window</title>
+    <title>ködade — two döts. one window.</title>
     <meta
       name="description"
-      content="ködade orchestrates the agent CLIs you already use in one fast, native window. Your shell. Your prompt. Your PATH."
+      content="ködade orchestrates the agent CLIs you already pay for in one fast, native window. Your shell. Your prompt. Your PATH."
     >
+    <meta property="og:title" content="ködade — two döts. one window.">
+    <meta property="og:description" content="ködade orchestrates the agent CLIs you already pay for in one fast, native window. Your shell. Your prompt. Your PATH.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kodade.com/">
+    <meta name="twitter:card" content="summary">
     <meta name="theme-color" content="#0F1012">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -22,8 +28,8 @@
         <span class="wordmark" aria-hidden="true">k<span class="wm-o"><span class="wm-o-space">ö</span><span class="wm-o-body">o</span><span class="wm-dot wm-dot-l"></span><span class="wm-dot wm-dot-r"></span></span>dade</span>
       </a>
       <nav class="nav-links" aria-label="Site">
-        <a href="#docs">docs</a>
-        <a href="#github">github</a>
+        <a href="#proof">proof</a>
+        <a href="#agents">agents</a>
         <a class="nav-cta pixel-clip" href="#download">Download for macOS</a>
       </nav>
     </header>
@@ -67,7 +73,7 @@
 
         <div class="hero-copy">
           <p class="eyebrow">agentic development environment</p>
-          <h1 id="hero-title">two <span class="dots-accent" aria-hidden="true">döts</span><span class="visually-hidden">döts</span>.<br>one window.</h1>
+          <h1 id="hero-title"><span class="visually-hidden">two döts. one window.</span><span aria-hidden="true">two <span class="dots-accent">döts</span>.<br>one window.</span></h1>
           <p class="lede">
             ködade orchestrates the agent CLIs you already pay for in one fast,
             native window. Your shell. Your prompt. Your PATH.
@@ -86,7 +92,7 @@
             <div class="dither-field mock-glow-wide"></div>
             <div class="dither-field mock-glow-tight"></div>
           </div>
-          <div class="product-shell" aria-label="ködade product preview">
+          <div class="product-shell" role="img" aria-label="Preview of the ködade app window: project sidebar, terminal running Claude Code, file list, and editor">
             <div class="window-bar">
               <span class="traffic traffic-red"></span>
               <span class="traffic traffic-yellow"></span>
@@ -161,13 +167,13 @@
           <p class="section-kicker">your subscriptions, one window</p>
           <h2 id="agents-title">Bring the agents you already use.</h2>
         </div>
-        <div class="agent-list" aria-label="Supported agent CLIs">
-          <span>Claude Code</span>
-          <span>Codex</span>
-          <span>Grok</span>
-          <span>OpenCode</span>
-          <span>Ollama</span>
-        </div>
+        <ul class="agent-list" aria-label="Supported agent CLIs">
+          <li>Claude Code</li>
+          <li>Codex</li>
+          <li>Grok</li>
+          <li>OpenCode</li>
+          <li>Ollama</li>
+        </ul>
       </section>
 
       <!-- Pixel-stair seam: quiet decorative band before the download section
@@ -199,7 +205,7 @@
           Until then, this page is the brand and landing surface for ködade.
         </p>
         <div class="hero-actions download-actions">
-          <a class="button-primary pixel-clip cta-dither download-disabled" href="#download" aria-disabled="true">Download for macOS</a>
+          <span class="button-primary pixel-clip download-disabled" aria-disabled="true">Download for macOS</span>
           <span class="meta-line">15 MB · Apple Silicon · free</span>
         </div>
       </section>
