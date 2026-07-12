@@ -28,6 +28,11 @@
 
   /* Hard offset shadow --- never blurred (SITE-PLAN §1, mock line 111). */
   --hard-shadow: 8px 8px 0 rgba(0, 0, 0, 0.55);
+
+  /* Product-window mock hairline (mock lines 113, 125, 134, 146, 149): a hair
+     lighter than --ink-700 (window border). Scoped to the mock rather than
+     reusing --ink-800, which the header also relies on. */
+  --mock-hairline: #24262a;
 }
 
 * {
@@ -399,18 +404,63 @@ h1 {
   font-size: 12px;
 }
 
+/* Wrapper positions the dither glow behind the window; the window itself is
+   the positioned, opaque layer on top (mock lines 108-111). */
+.product-shell-wrap {
+  margin: 0 auto;
+  /* Reserve room in the hero's (overflow:hidden) flow for the glow's bottom
+     overhang (-90px, see .mock-glow-wide) so it isn't clipped. */
+  margin-bottom: 90px;
+  max-width: 1060px;
+  position: relative;
+}
+
+/* Double dither glow (mock lines 109-110): wide 6px field with heavy overhang
+   top/bottom + a tighter, shorter-reach 3px field. Both center-masked
+   ellipses so the glow blooms from the middle and fades at the edges. */
+.mock-glow {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* Glow layers behind the window (mock lines 109-110). */
+.mock-glow-wide {
+  --dither-cell: 6px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: var(--dither-a6);
+  --dither-mask: radial-gradient(ellipse 60% 58% at 50% 50%, #000, transparent 72%);
+  bottom: -90px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -70px;
+}
+.mock-glow-tight {
+  --dither-cell: 3px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: var(--dither-a5);
+  --dither-mask: radial-gradient(ellipse 50% 50% at 50% 50%, #000, transparent 65%);
+  bottom: -50px;
+  left: 40px;
+  position: absolute;
+  right: 40px;
+  top: -30px;
+}
+
 .product-shell {
   background: var(--ink-900);
   border: 1px solid var(--ink-700);
   box-shadow: var(--hard-shadow);
-  margin: 0 auto;
-  max-width: 1060px;
   overflow: hidden;
+  position: relative;
 }
 
 .window-bar {
   align-items: center;
-  border-bottom: 1px solid var(--ink-800);
+  border-bottom: 1px solid var(--mock-hairline);
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(3, 11px) 1fr;
@@ -455,7 +505,7 @@ h1 {
 .file-rail,
 .terminal-pane,
 .editor-pane {
-  border-right: 1px solid var(--ink-800);
+  border-right: 1px solid var(--mock-hairline);
   min-width: 0;
   overflow: hidden;
 }
@@ -506,7 +556,7 @@ h1 {
 
 .rail-row.active,
 .file-row.active {
-  background: var(--ink-800);
+  background: var(--mock-hairline);
   color: var(--paper);
 }
 
@@ -527,17 +577,33 @@ h1 {
   white-space: nowrap;
 }
 
+/* .muted covers both the terminal's boxed CLI banner (mock ink-600) and the
+   editor's keyword tokens (mock ink-500) -- ink-500 wins since keywords are
+   the dominant use; the one banner/comment line that needs ink-600 is
+   corrected per-pane below. */
 .muted {
   color: var(--ink-500);
 }
 
-.dim,
+.terminal-pane .muted,
+.editor-pane p:first-child .muted {
+  color: var(--ink-600);
+}
+
+.dim {
+  color: var(--ink-500);
+}
+
 .prompt {
   color: var(--ink-600);
 }
 
 .accent-text {
   color: var(--accent);
+}
+
+.bright-text {
+  color: var(--paper);
 }
 
 .cursor {
@@ -638,22 +704,20 @@ h1 {
      --dither-rgb    var(--dither-amber) or var(--dither-paper)
      --dither-alpha  one of --dither-a1..a6 (or a raw 0-1 number)
      --dither-mask   a radial-gradient() that shapes the field to a soft blob
-   Consumer is responsible for position/size (absolute, width/height, insets). */
+   Consumer is responsible for position/size (absolute, width/height, insets).
+   Defaults live in var() fallbacks (not declarations) so consumer overrides
+   win regardless of where they sit in the cascade. */
 .dither-field {
-  --dither-cell: 5px;
-  --dither-rgb: var(--dither-amber);
-  --dither-alpha: var(--dither-a3);
-  --dither-mask: radial-gradient(ellipse 70% 72% at 50% 0%, #000, transparent 74%);
   pointer-events: none;
   background: conic-gradient(
-    rgba(var(--dither-rgb), var(--dither-alpha)) 25%,
+    rgba(var(--dither-rgb, var(--dither-amber)), var(--dither-alpha, var(--dither-a3))) 25%,
     transparent 0 50%,
-    rgba(var(--dither-rgb), var(--dither-alpha)) 0 75%,
+    rgba(var(--dither-rgb, var(--dither-amber)), var(--dither-alpha, var(--dither-a3))) 0 75%,
     transparent 0
   );
-  background-size: var(--dither-cell) var(--dither-cell);
-  -webkit-mask: var(--dither-mask);
-  mask: var(--dither-mask);
+  background-size: var(--dither-cell, 5px) var(--dither-cell, 5px);
+  -webkit-mask: var(--dither-mask, radial-gradient(ellipse 70% 72% at 50% 0%, #000, transparent 74%));
+  mask: var(--dither-mask, radial-gradient(ellipse 70% 72% at 50% 0%, #000, transparent 74%));
 }
 
 /* --- Halftone ramp --------------------------------------------------------

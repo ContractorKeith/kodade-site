@@ -78,53 +78,62 @@
           </div>
         </div>
 
-        <div class="product-shell" aria-label="ködade product preview">
-          <div class="window-bar">
-            <span class="traffic traffic-red"></span>
-            <span class="traffic traffic-yellow"></span>
-            <span class="traffic traffic-green"></span>
-            <span class="window-title">ködade - ~/dev/rocket</span>
+        <div class="product-shell-wrap">
+          <!-- Double dither glow behind the window (mock lines 109-110): a wide
+               6px amber field + a tighter 3px amber field, both center-masked
+               ellipses. Purely decorative, sits behind the opaque window. -->
+          <div class="mock-glow" aria-hidden="true">
+            <div class="dither-field mock-glow-wide"></div>
+            <div class="dither-field mock-glow-tight"></div>
           </div>
-          <div class="workspace-preview">
-            <aside class="project-rail" aria-label="Projects">
-              <p class="rail-label">PROJECTS</p>
-              <div class="rail-row active">rocket</div>
-              <div class="rail-row nested running"><span></span>claude · main</div>
-              <div class="rail-row nested"><span></span>codex · feature</div>
-              <div class="rail-row">website</div>
-              <div class="rail-row">dotfiles</div>
-            </aside>
-            <section class="terminal-pane" aria-label="Terminal">
-              <p><span class="accent-text">~/dev/rocket</span> <span>on</span> main</p>
-              <p><span class="prompt">❯</span> claude</p>
-              <p class="muted">╭─ Claude Code v2.4</p>
-              <p class="muted">│  ~/dev/rocket · sonnet</p>
-              <p class="muted">╰─ ready</p>
-              <p>&gt; fix the flaky retry test</p>
-              <p class="dim">● Reading tests/retry.test.ts</p>
-              <p class="dim">● Editing src/retry.ts</p>
-              <p><span class="prompt">❯</span> <span class="cursor"></span></p>
-            </section>
-            <aside class="file-rail" aria-label="Files">
-              <p class="rail-label">FILES</p>
-              <div class="file-row">src</div>
-              <div class="file-row active">retry.ts <span>•</span></div>
-              <div class="file-row">queue.ts</div>
-              <div class="file-row">index.ts</div>
-              <div class="file-row">tests</div>
-              <div class="file-row">retry.test.ts</div>
-            </aside>
-            <section class="editor-pane" aria-label="Editor">
-              <p class="muted">// src/retry.ts</p>
-              <p><span class="muted">export function</span> retry(fn, opts) {</p>
-              <p>&nbsp;&nbsp;<span class="muted">const</span> max = opts.max ?? <span class="accent-text">3</span>;</p>
-              <p>&nbsp;&nbsp;<span class="muted">let</span> delay = opts.base ?? <span class="accent-text">250</span>;</p>
-              <p>&nbsp;&nbsp;<span class="muted">for</span> (<span class="muted">let</span> i = <span class="accent-text">0</span>; i &lt; max; i++) {</p>
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="muted">try</span> { <span class="muted">return await</span> fn(); }</p>
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="muted">catch</span> (e) { <span class="muted">await</span> sleep(delay); }</p>
-              <p>&nbsp;&nbsp;}</p>
-              <p>}</p>
-            </section>
+          <div class="product-shell" aria-label="ködade product preview">
+            <div class="window-bar">
+              <span class="traffic traffic-red"></span>
+              <span class="traffic traffic-yellow"></span>
+              <span class="traffic traffic-green"></span>
+              <span class="window-title">ködade - ~/dev/rocket</span>
+            </div>
+            <div class="workspace-preview">
+              <aside class="project-rail" aria-label="Projects">
+                <p class="rail-label">PROJECTS</p>
+                <div class="rail-row active">rocket</div>
+                <div class="rail-row nested running"><span></span>claude · main</div>
+                <div class="rail-row nested"><span></span>codex · feature</div>
+                <div class="rail-row">website</div>
+                <div class="rail-row">dotfiles</div>
+              </aside>
+              <section class="terminal-pane" aria-label="Terminal">
+                <p><span class="accent-text">~/dev/rocket</span> <span class="muted">on</span> <span class="dim">main</span></p>
+                <p><span class="prompt">❯</span> claude</p>
+                <p class="muted">╭─ Claude Code v2.4</p>
+                <p class="muted">│  ~/dev/rocket · sonnet</p>
+                <p class="muted">╰─ ready</p>
+                <p>&gt; fix the flaky retry test</p>
+                <p class="dim">● Reading tests/retry.test.ts</p>
+                <p class="dim">● Editing src/retry.ts</p>
+                <p><span class="prompt">❯</span> <span class="cursor"></span></p>
+              </section>
+              <aside class="file-rail" aria-label="Files">
+                <p class="rail-label">FILES</p>
+                <div class="file-row">src</div>
+                <div class="file-row active">retry.ts <span>•</span></div>
+                <div class="file-row">queue.ts</div>
+                <div class="file-row">index.ts</div>
+                <div class="file-row">tests</div>
+                <div class="file-row">retry.test.ts</div>
+              </aside>
+              <section class="editor-pane" aria-label="Editor">
+                <p class="muted">// src/retry.ts</p>
+                <p><span class="muted">export function</span> <span class="bright-text">retry</span>(fn, opts) {</p>
+                <p>&nbsp;&nbsp;<span class="muted">const</span> max = opts.max ?? <span class="accent-text">3</span>;</p>
+                <p>&nbsp;&nbsp;<span class="muted">let</span> delay = opts.base ?? <span class="accent-text">250</span>;</p>
+                <p>&nbsp;&nbsp;<span class="muted">for</span> (<span class="muted">let</span> i = <span class="accent-text">0</span>; i &lt; max; i++) {</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="muted">try</span> { <span class="muted">return await</span> fn(); }</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="muted">catch</span> (e) { <span class="muted">await</span> sleep(delay); }</p>
+                <p>&nbsp;&nbsp;}</p>
+                <p>}</p>
+              </section>
+            </div>
           </div>
         </div>
       </section>
