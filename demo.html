@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ködade — dither vocabulary demo (ticket #1)</title>
+<link rel="stylesheet" href="./styles.css">
+<style>
+  /* demo-only scaffolding, not part of the vocabulary */
+  body { background: var(--ink-950); color: var(--paper); padding: 40px; }
+  .demo-h { font-family: var(--mono); color: var(--accent); font-size: 13px;
+            text-transform: uppercase; letter-spacing: .08em; margin: 40px 0 14px; }
+  .swatch-row { display: flex; flex-wrap: wrap; gap: 20px; }
+  .swatch {
+    position: relative; width: 220px; height: 160px;
+    background: var(--ink-900); border: 1px solid var(--ink-700); overflow: hidden;
+  }
+  .swatch .label {
+    position: absolute; left: 8px; bottom: 6px; z-index: 2;
+    font-family: var(--mono); font-size: 11px; color: var(--ink-300);
+  }
+  /* a field that fills the swatch, centered blob mask so the checker is obvious */
+  .fill { position: absolute; inset: 0; }
+  .card-demo {
+    background: var(--ink-900); border: 1px solid var(--ink-700);
+    padding: 26px 30px; max-width: 360px; margin-top: 8px;
+    font-family: var(--mono); font-size: 14px; color: var(--paper);
+  }
+</style>
+</head>
+<body>
+
+  <h1 style="font-family:var(--mono);font-size:24px">dither vocabulary — ticket #1 demo</h1>
+
+  <!-- DITHER FIELDS: every cell size, amber + paper, masked -->
+  <p class="demo-h">.dither-field — amber (cells 3/5/6/8px)</p>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:3px;--dither-rgb:var(--dither-amber);--dither-alpha:var(--dither-a5);--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">amber 3px</span>
+    </div>
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:5px;--dither-rgb:var(--dither-amber);--dither-alpha:var(--dither-a5);--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">amber 5px</span>
+    </div>
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:6px;--dither-rgb:var(--dither-amber);--dither-alpha:var(--dither-a5);--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">amber 6px</span>
+    </div>
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:8px;--dither-rgb:var(--dither-amber);--dither-alpha:var(--dither-a6);--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">amber 8px</span>
+    </div>
+  </div>
+
+  <p class="demo-h">.dither-field — paper (cells 3/5/6/8px)</p>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:3px;--dither-rgb:var(--dither-paper);--dither-alpha:0.35;--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">paper 3px</span>
+    </div>
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:5px;--dither-rgb:var(--dither-paper);--dither-alpha:0.35;--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">paper 5px</span>
+    </div>
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:6px;--dither-rgb:var(--dither-paper);--dither-alpha:0.35;--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">paper 6px</span>
+    </div>
+    <div class="swatch">
+      <div class="dither-field fill" style="--dither-cell:8px;--dither-rgb:var(--dither-paper);--dither-alpha:0.4;--dither-mask:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <span class="label">paper 8px</span>
+    </div>
+  </div>
+
+  <!-- HALFTONE RAMP -->
+  <p class="demo-h">.halftone-ramp — amber seam</p>
+  <div class="halftone-ramp"></div>
+  <p class="demo-h">.halftone-ramp — paper seam</p>
+  <div class="halftone-ramp" style="--halftone-rgb:var(--dither-paper)"></div>
+
+  <!-- PIXEL STAIR ORNAMENT (recreates mock top-right scatter, lines 48-60) -->
+  <p class="demo-h">.pixel-stair — scatter ornament</p>
+  <div class="pixel-stair" style="--stair-cell:14px;--stair-cols:6">
+    <div class="cell-amber" style="grid-column:5;grid-row:1"></div>
+    <div class="cell-amber" style="grid-column:6;grid-row:1;opacity:.45"></div>
+    <div class="cell-amber" style="grid-column:4;grid-row:2;opacity:.85"></div>
+    <div class="cell-amber" style="grid-column:6;grid-row:2;opacity:.3"></div>
+    <div class="cell-amber" style="grid-column:3;grid-row:3;opacity:.65"></div>
+    <div class="cell-paper" style="grid-column:5;grid-row:3;opacity:.6"></div>
+    <div class="cell-amber" style="grid-column:2;grid-row:4;opacity:.5"></div>
+    <div class="cell-amber" style="grid-column:4;grid-row:4;opacity:.25"></div>
+    <div class="cell-amber" style="grid-column:1;grid-row:5;opacity:.35"></div>
+    <div class="cell-paper" style="grid-column:3;grid-row:5;opacity:.3"></div>
+    <div class="cell-amber" style="grid-column:2;grid-row:6;opacity:.2"></div>
+  </div>
+
+  <!-- HARD SHADOW + STAIR-CORNER CLIP on a sample card -->
+  <p class="demo-h">.hard-shadow + .pixel-clip — sample card</p>
+  <div class="card-demo hard-shadow pixel-clip" style="--clip-step:6px">
+    <div style="color:var(--accent)">two döts.</div>
+    <div style="color:var(--ink-300);margin-top:6px">offset shadow, stair-stepped corners</div>
+  </div>
+
+  <!-- stair clip on a button -->
+  <p class="demo-h">.pixel-clip on a button</p>
+  <a class="button-primary pixel-clip" href="#" style="--clip-step:4px">Download for macOS</a>
+
+</body>
+</html>

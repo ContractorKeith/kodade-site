@@ -12,10 +12,35 @@
   --accent-on-light: oklch(0.66 0.14 75);
   --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Dither vocabulary (SITE-PLAN §1) --- raw RGB channels for the two dither
+     inks, so consumers set only --dither-alpha to pick a step. */
+  --dither-amber: 230, 160, 60;   /* amber ink, matches mock rgba(230,160,60) */
+  --dither-paper: 247, 246, 243;  /* paper ink, matches mock rgba(247,246,243) */
+
+  /* Dither-alpha steps (subtle -> dense). Consumers pick one via --dither-alpha. */
+  --dither-a1: 0.08;   /* faint paper wash (mock line 42) */
+  --dither-a2: 0.18;   /* halftone tail (mock line 177) */
+  --dither-a3: 0.2;    /* amber halo base (mock line 41) */
+  --dither-a4: 0.28;   /* amber wedges (mock lines 44-45) */
+  --dither-a5: 0.35;   /* mock line 110 glow */
+  --dither-a6: 0.5;    /* dense window glow (mock line 109) */
+
+  /* Hard offset shadow --- never blurred (SITE-PLAN §1, mock line 111). */
+  --hard-shadow: 8px 8px 0 rgba(0, 0, 0, 0.55);
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Hard geometry baseline (SITE-PLAN §1): squared corners everywhere. Individual
+   components opt back into rounding only where a real macOS widget needs it
+   (traffic lights below). */
+*,
+*::before,
+*::after {
+  border-radius: 0;
 }
 
 html {
@@ -186,7 +211,7 @@ h1 {
 .product-shell {
   background: var(--ink-900);
   border: 1px solid var(--ink-700);
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: var(--hard-shadow);
   margin: 0 auto;
   max-width: 1060px;
   overflow: hidden;
@@ -407,6 +432,115 @@ h1 {
 .download p {
   margin: 16px auto 26px;
   max-width: 560px;
+}
+
+/* ==========================================================================
+   DITHER / PIXEL VOCABULARY (SITE-PLAN §1) --- pure-CSS textures, zero images.
+   All fields degrade to nothing where mask-image is unsupported (see @supports
+   guard at the bottom of this block).
+   ========================================================================== */
+
+/* --- Bayer dither field ---------------------------------------------------
+   The 2x2 conic checker from the mock (lines 40-45), parameterized. Drop a
+   positioned div with .dither-field and override the custom properties:
+     --dither-cell   cell size: 3px | 5px | 6px | 8px
+     --dither-rgb    var(--dither-amber) or var(--dither-paper)
+     --dither-alpha  one of --dither-a1..a6 (or a raw 0-1 number)
+     --dither-mask   a radial-gradient() that shapes the field to a soft blob
+   Consumer is responsible for position/size (absolute, width/height, insets). */
+.dither-field {
+  --dither-cell: 5px;
+  --dither-rgb: var(--dither-amber);
+  --dither-alpha: var(--dither-a3);
+  --dither-mask: radial-gradient(ellipse 70% 72% at 50% 0%, #000, transparent 74%);
+  pointer-events: none;
+  background: conic-gradient(
+    rgba(var(--dither-rgb), var(--dither-alpha)) 25%,
+    transparent 0 50%,
+    rgba(var(--dither-rgb), var(--dither-alpha)) 0 75%,
+    transparent 0
+  );
+  background-size: var(--dither-cell) var(--dither-cell);
+  -webkit-mask: var(--dither-mask);
+  mask: var(--dither-mask);
+}
+
+/* --- Halftone ramp --------------------------------------------------------
+   The 4-row shrinking-dot seam from the mock (lines 172-178), as one element
+   with four stacked radial-gradient layers. Amber by default; override
+   --halftone-rgb to var(--dither-paper) for a paper seam. Each row is 8px tall
+   with a smaller/fainter dot than the one above, so the texture fades out. */
+.halftone-ramp {
+  --halftone-rgb: var(--dither-amber);
+  pointer-events: none;
+  height: 32px;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(var(--halftone-rgb), 0.55) 44%, transparent 48%),
+    radial-gradient(circle at 50% 50%, rgba(var(--halftone-rgb), 0.42) 36%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(var(--halftone-rgb), 0.3) 28%, transparent 32%),
+    radial-gradient(circle at 50% 50%, rgba(var(--halftone-rgb), 0.18) 20%, transparent 24%);
+  background-size: 8px 8px;
+  background-position:
+    0 0,      /* row 1: densest, top */
+    4px 8px,  /* row 2: offset half-cell, staggered */
+    0 16px,   /* row 3 */
+    4px 24px; /* row 4: faintest, bottom */
+  background-repeat: repeat-x;
+}
+
+/* --- Pixel stair ornament -------------------------------------------------
+   CSS-grid scatter from the mock (lines 47-70). This class is just the grid
+   container; each ornament's cells are placed per-instance (inline grid-column/
+   grid-row + amber/paper background + opacity), because every scatter is unique.
+   Default cell 14px; override --stair-cell (mock uses 13px and 14px). */
+.pixel-stair {
+  --stair-cell: 14px;
+  display: grid;
+  grid-template-columns: repeat(var(--stair-cols, 6), var(--stair-cell));
+  grid-auto-rows: var(--stair-cell);
+  pointer-events: none;
+}
+/* Convenience cell colors so instances can use classes instead of inline bg. */
+.pixel-stair .cell-amber { background: var(--accent); }
+.pixel-stair .cell-paper { background: var(--paper); }
+
+/* --- Stair-stepped corner clip -------------------------------------------
+   Subtle 2-3 step pixel corner for buttons/cards (SITE-PLAN §1 "pixel-clipped
+   edges"). --clip-step is the pixel depth of each stair (default 4px). Applied
+   via clip-path polygon: all four corners get a 2-step notch. */
+.pixel-clip {
+  --clip-step: 4px;
+  clip-path: polygon(
+    var(--clip-step) 0,
+    calc(100% - var(--clip-step)) 0,
+    calc(100% - var(--clip-step)) var(--clip-step),
+    100% var(--clip-step),
+    100% calc(100% - var(--clip-step)),
+    calc(100% - var(--clip-step)) calc(100% - var(--clip-step)),
+    calc(100% - var(--clip-step)) 100%,
+    var(--clip-step) 100%,
+    var(--clip-step) calc(100% - var(--clip-step)),
+    0 calc(100% - var(--clip-step)),
+    0 var(--clip-step),
+    var(--clip-step) var(--clip-step)
+  );
+}
+
+/* --- Hard offset shadow ---------------------------------------------------
+   The offset-never-blurred shadow (mock line 111). Utility for cards/mock. */
+.hard-shadow {
+  box-shadow: var(--hard-shadow);
+}
+
+/* --- Graceful degradation -------------------------------------------------
+   Dither fields rely on mask-image to be shaped; without it they would paint as
+   full-bleed checkerboards over the whole page. Default the field to hidden and
+   only reveal it where masks are supported, so unmasked browsers get the clean
+   dark layout. (Halftone ramp and pixel stairs need no mask and always show.) */
+.dither-field { display: none; }
+@supports (mask-image: radial-gradient(#000, transparent)) or
+          (-webkit-mask-image: radial-gradient(#000, transparent)) {
+  .dither-field { display: block; }
 }
 
 @media (max-width: 920px) {
