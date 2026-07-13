@@ -19,7 +19,9 @@ yet, and the current macOS build is not signed or notarized.
 > **Before following the guides**
 >
 > You need a current test build supplied through the project. These pages do not
-> provide a Gatekeeper workaround or a public installation package.
+> provide a public installation package. If macOS blocks a trusted test build,
+> follow the limited local-testing steps in [Troubleshooting](../support/troubleshooting.md#macos-blocks-the-test-build);
+> those steps do not sign, notarize, or verify the app.
 
 ## Agent CLI requirements
 

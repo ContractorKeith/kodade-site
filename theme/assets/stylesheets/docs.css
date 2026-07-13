@@ -323,7 +323,7 @@
 }
 
 .docs-site .docs-article .admonition.warning .admonition-title::before {
-  background: var(--accent);
+  background: var(--ink-500);
   content: "";
   display: inline-block;
   height: 6px;
