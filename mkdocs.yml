@@ -1,0 +1,51 @@
+site_name: ködade docs
+site_description: Documentation for the ködade Agentic Development Environment
+site_url: https://kodade.com/docs/
+docs_dir: docs
+site_dir: dist/docs
+strict: true
+use_directory_urls: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - fenced_code
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+
+theme:
+  name: null
+  custom_dir: theme
+  static_templates:
+    - 404.html
+  include_search_page: true
+  search_index_only: false
+
+plugins:
+  - search
+
+nav:
+  - Start here:
+      - Overview: index.md
+      - Requirements and release status: getting-started/requirements.md
+      - Your first project: getting-started/first-project.md
+  - Core workflow:
+      - Projects and workspace layout: core/projects.md
+      - Terminal sessions: core/terminal-sessions.md
+      - Agent CLIs: core/agent-clis.md
+  - Workspace tools:
+      - Work with files: workspace/files.md
+      - Edit and save files: workspace/editor.md
+      - Preview files: workspace/previews.md
+      - View GitHub work: workspace/github.md
+      - Use the embedded browser: workspace/browser.md
+  - Personalize:
+      - Settings and themes: personalize/settings-themes.md
+      - Keyboard shortcuts: personalize/keyboard-shortcuts.md
+  - Trust and support:
+      - Local data and privacy: trust/local-data-privacy.md
+      - Security boundaries: trust/security.md
+      - Troubleshooting: support/troubleshooting.md
+      - Platform and release status: support/platform-status.md
