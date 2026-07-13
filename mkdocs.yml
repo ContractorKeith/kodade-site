@@ -1,0 +1,13 @@
+site_name: ködade docs
+site_description: Documentation for the ködade Agentic Development Environment
+site_url: https://kodade.com/docs/
+docs_dir: docs
+site_dir: dist/docs
+strict: true
+use_directory_urls: true
+
+theme:
+  name: mkdocs
+
+nav:
+  - Start here: index.md

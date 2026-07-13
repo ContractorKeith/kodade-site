@@ -1,6 +1,8 @@
 .DS_Store
 .claude/*.local.json
 node_modules/
+.venv/
+.wrangler/
 dist/
 .env
 .env.*
