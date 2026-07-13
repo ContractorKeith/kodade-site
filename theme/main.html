@@ -1,0 +1,141 @@
+{% macro render_navigation(items, depth=0) -%}
+  <ul class="docs-nav-list docs-nav-level-{{ depth }}">
+    {%- for nav_item in items %}
+      {%- if nav_item.children %}
+        <li class="docs-nav-group{% if nav_item.active %} is-active{% endif %}">
+          <span class="docs-nav-heading">{{ nav_item.title|e }}</span>
+          {{ render_navigation(nav_item.children, depth + 1) }}
+        </li>
+      {%- else %}
+        <li>
+          <a href="{{ nav_item.url|url }}"{% if nav_item.active %} aria-current="page"{% endif %}>{{ nav_item.title|e }}</a>
+        </li>
+      {%- endif %}
+    {%- endfor %}
+  </ul>
+{%- endmacro %}
+
+{% macro render_toc(items) -%}
+  <ul class="docs-toc-list">
+    {%- for toc_item in items %}
+      <li>
+        <a href="{{ toc_item.url }}">{{ toc_item.title|striptags|e }}</a>
+        {%- if toc_item.children %}{{ render_toc(toc_item.children) }}{% endif %}
+      </li>
+    {%- endfor %}
+  </ul>
+{%- endmacro %}
+
+{% set page_description = page.meta.description if page and page.meta and page.meta.description else config.site_description %}
+{% set show_toc = page and page.toc and ((page.toc|length > 1) or page.toc.items[0].children) %}
+<!doctype html>
+<html lang="{{ config.theme.locale|default('en') }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page_description|e }}">
+    <meta name="theme-color" content="#0F1012">
+    {% block robots %}{% endblock %}
+    {% block canonical %}{% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}{% endblock %}
+    <meta property="og:title" content="{% block open_graph_title %}{% if page and page.title and not page.is_homepage %}{{ page.title|e }} — {% endif %}{{ config.site_name|e }}{% endblock %}">
+    <meta property="og:description" content="{{ page_description|e }}">
+    <meta property="og:type" content="website">
+    {% block open_graph_url %}{% if page and page.canonical_url %}<meta property="og:url" content="{{ page.canonical_url }}">{% endif %}{% endblock %}
+    <meta name="twitter:card" content="summary">
+    <title>{% block title %}{% if page and page.title and not page.is_homepage %}{{ page.title|e }} — {% endif %}{{ config.site_name|e }}{% endblock %}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/docs.css'|url }}">
+  </head>
+  <body class="docs-site {% block body_class %}{% endblock %}">
+    <a class="skip-link" href="#main-content">skip to content</a>
+
+    <header class="site-header docs-header">
+      <div class="docs-header-inner">
+        <div class="docs-brand-group">
+          <a class="brand" href="/" aria-label="ködade home">
+            <span class="brand-mark" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+            <span class="wordmark" aria-hidden="true">k<span class="wm-o"><span class="wm-o-space">ö</span><span class="wm-o-body">o</span><span class="wm-dot wm-dot-l"></span><span class="wm-dot wm-dot-r"></span></span>dade</span>
+          </a>
+          <a class="docs-label" href="/docs/"{% if page and page.is_homepage %} aria-current="page"{% endif %}>docs</a>
+        </div>
+        <nav class="nav-links docs-header-nav" aria-label="Site">
+          <a href="{{ 'search.html'|url }}"{% block search_attributes %}{% endblock %}>search</a>
+          <a class="nav-cta pixel-clip" href="/#download">Download for macOS</a>
+        </nav>
+      </div>
+      <div class="docs-dither-seam" aria-hidden="true"></div>
+    </header>
+
+    <div class="docs-shell">
+      <details class="docs-mobile-nav">
+        <summary>browse docs</summary>
+        <nav aria-label="Documentation">
+          {{ render_navigation(nav) }}
+        </nav>
+      </details>
+
+      {% if show_toc %}
+        <details class="docs-mobile-toc">
+          <summary>on this page</summary>
+          <nav aria-label="On this page">
+            {{ render_toc(page.toc) }}
+          </nav>
+        </details>
+      {% endif %}
+
+      <div class="docs-layout{% if not show_toc %} docs-layout-no-toc{% endif %}">
+        <aside class="docs-section-nav">
+          <nav aria-label="Documentation">
+            <p class="docs-nav-title">documentation</p>
+            {{ render_navigation(nav) }}
+          </nav>
+        </aside>
+
+        <main id="main-content" tabindex="-1">
+          <article class="docs-article">
+            {% block content %}{{ page.content }}{% endblock %}
+          </article>
+
+          {% if page and (page.previous_page or page.next_page) %}
+            <nav class="docs-pagination" aria-label="Previous and next pages">
+              {% if page.previous_page %}
+                <a class="docs-page-link docs-page-previous" rel="prev" href="{{ page.previous_page.url|url }}">
+                  <span>previous</span>
+                  <strong>{{ page.previous_page.title|e }}</strong>
+                </a>
+              {% endif %}
+              {% if page.next_page %}
+                <a class="docs-page-link docs-page-next" rel="next" href="{{ page.next_page.url|url }}">
+                  <span>next</span>
+                  <strong>{{ page.next_page.title|e }}</strong>
+                </a>
+              {% endif %}
+            </nav>
+          {% endif %}
+        </main>
+
+        {% if show_toc %}
+          <aside class="docs-on-page">
+            <nav aria-label="On this page">
+              <p class="docs-nav-title">on this page</p>
+              {{ render_toc(page.toc) }}
+            </nav>
+          </aside>
+        {% endif %}
+      </div>
+    </div>
+
+    <footer class="docs-footer">
+      <a href="/" aria-label="ködade home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+      </a>
+      <p>© 2026 ködade</p>
+    </footer>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

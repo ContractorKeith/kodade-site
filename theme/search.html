@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+
+{% block title %}Search — {{ config.site_name|e }}{% endblock %}
+{% block body_class %}docs-search-page{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ config.site_url }}search.html">{% endblock %}
+{% block open_graph_title %}Search — {{ config.site_name|e }}{% endblock %}
+{% block open_graph_url %}<meta property="og:url" content="{{ config.site_url }}search.html">{% endblock %}
+{% block search_attributes %} aria-current="page"{% endblock %}
+
+{% block content %}
+  <h1>Search</h1>
+  <p>Search the ködade documentation.</p>
+  <form class="docs-search-form" action="{{ 'search.html'|url }}" method="get" role="search">
+    <label for="mkdocs-search-query">search documentation</label>
+    <div class="docs-search-control">
+      <input id="mkdocs-search-query" name="q" type="search" autocomplete="off" spellcheck="false">
+      <button class="pixel-clip" type="submit">search</button>
+    </div>
+  </form>
+  <section class="docs-search-results" aria-labelledby="search-results-title">
+    <h2 id="search-results-title">results</h2>
+    <div id="mkdocs-search-results" data-no-results-text="No results found." aria-live="polite"></div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script>var base_url = {{ base_url|tojson }};</script>
+  <script src="{{ 'search/main.js'|url }}" defer></script>
+{% endblock %}
