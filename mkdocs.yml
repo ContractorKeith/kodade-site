@@ -6,8 +6,25 @@ site_dir: dist/docs
 strict: true
 use_directory_urls: true
 
+markdown_extensions:
+  - admonition
+  - attr_list
+  - fenced_code
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+
 theme:
-  name: mkdocs
+  name: null
+  custom_dir: theme
+  static_templates:
+    - 404.html
+  include_search_page: true
+  search_index_only: false
+
+plugins:
+  - search
 
 nav:
   - Start here: index.md
