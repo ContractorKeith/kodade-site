@@ -27,6 +27,12 @@ The build starts from an empty `dist/`, copies an explicit allowlist of landing
 and Cloudflare control files, then runs MkDocs in strict mode. Generated output
 is ignored by Git and must not be committed.
 
+Static CI validates canonical URLs, landmarks, unique IDs, internal links and
+anchors, local assets, sitemap/search coverage, 404 artifacts, redirects,
+headers, and the deploy allowlist. A Cloudflare preview is still required to
+check desktop/mobile layout, keyboard and focus behavior, real HTTP status and
+redirect behavior, preview `noindex` headers, and the deployed source SHA.
+
 ## Project notes
 
 - Brand and product direction lives in `DESIGN.md`.
