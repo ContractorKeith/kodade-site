@@ -27,4 +27,25 @@ plugins:
   - search
 
 nav:
-  - Start here: index.md
+  - Start here:
+      - Overview: index.md
+      - Requirements and release status: getting-started/requirements.md
+      - Your first project: getting-started/first-project.md
+  - Core workflow:
+      - Projects and workspace layout: core/projects.md
+      - Terminal sessions: core/terminal-sessions.md
+      - Agent CLIs: core/agent-clis.md
+  - Workspace tools:
+      - Work with files: workspace/files.md
+      - Edit and save files: workspace/editor.md
+      - Preview files: workspace/previews.md
+      - View GitHub work: workspace/github.md
+      - Use the embedded browser: workspace/browser.md
+  - Personalize:
+      - Settings and themes: personalize/settings-themes.md
+      - Keyboard shortcuts: personalize/keyboard-shortcuts.md
+  - Trust and support:
+      - Local data and privacy: trust/local-data-privacy.md
+      - Security boundaries: trust/security.md
+      - Troubleshooting: support/troubleshooting.md
+      - Platform and release status: support/platform-status.md
