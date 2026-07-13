@@ -20,7 +20,7 @@
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
-      <a class="brand" href="#" aria-label="ködade home">
+      <a class="brand" href="/" aria-label="ködade home">
         <span class="brand-mark" aria-hidden="true">
           <span></span>
           <span></span>
@@ -31,7 +31,7 @@
         <a href="/docs/">docs</a>
         <a href="#proof">proof</a>
         <a href="#agents">agents</a>
-        <a class="nav-cta pixel-clip" href="#download">Download for macOS</a>
+        <a class="nav-cta pixel-clip" href="/docs/support/platform-status/">release status</a>
       </nav>
     </header>
 
@@ -80,8 +80,11 @@
             native window. Your shell. Your prompt. Your PATH.
           </p>
           <div class="hero-actions">
-            <a class="button-primary pixel-clip cta-dither" href="#download">Download for macOS</a>
-            <span class="meta-line">15 MB · Apple Silicon · free</span>
+            <div class="release-actions" aria-label="Platform release status">
+              <span class="button-primary pixel-clip download-disabled" aria-disabled="true">macOS — coming soon</span>
+              <span class="button-secondary pixel-clip download-disabled" aria-disabled="true">Windows — coming soon</span>
+            </div>
+            <span class="meta-line">public installers pending</span>
           </div>
         </div>
 
@@ -199,15 +202,19 @@
 
       <section class="download" id="download" aria-labelledby="download-title">
         <div class="dither-field download-dither" aria-hidden="true"></div>
-        <p class="section-kicker">macos first</p>
-        <h2 id="download-title">A quiet window for loud tools.</h2>
+        <p class="section-kicker">macos + windows</p>
+        <h2 id="download-title">Two platforms, almost ready.</h2>
         <p>
-          The public download will land here when the first macOS build is ready.
-          Until then, this page is the brand and landing surface for ködade.
+          The macOS release is waiting on Apple signing and notarization. The
+          Windows build is in final pre-release validation. Public installers
+          will land here when each build is ready.
         </p>
         <div class="hero-actions download-actions">
-          <span class="button-primary pixel-clip download-disabled" aria-disabled="true">Download for macOS</span>
-          <span class="meta-line">15 MB · Apple Silicon · free</span>
+          <div class="release-actions" aria-label="Platform release status">
+            <span class="button-primary pixel-clip download-disabled" aria-disabled="true">macOS — coming soon</span>
+            <span class="button-secondary pixel-clip download-disabled" aria-disabled="true">Windows — coming soon</span>
+          </div>
+          <a class="meta-line release-link" href="/docs/support/platform-status/">read the release status</a>
         </div>
       </section>
     </main>
