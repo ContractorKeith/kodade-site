@@ -1,24 +1,37 @@
 # kodade-site
 
-Static landing page for **ködade**, an Agentic Development Environment (a macOS
-terminal app that orchestrates agent CLIs). This repo is the marketing site only —
-one page, no build step, no dependencies. Done = kodade.com serving a fast,
-brand-correct page with a working macOS download CTA.
+Landing page and public documentation for **ködade**, an Agentic Development
+Environment (a macOS terminal app that orchestrates agent CLIs). The landing
+page stays hand-authored HTML/CSS; MkDocs builds the documentation. Both ship in
+one curated Cloudflare Pages artifact.
 
 ## Status
-active — last touched 2026-07-11
+active — last touched 2026-07-13
 
 ## Commands
 ```bash
-# preview (no build step — either works):
-open index.html
-python3 -m http.server 8000   # then http://localhost:8000
+# first-time setup (Python is pinned for Cloudflare Pages v3)
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements.txt
+
+# build and preview the same artifact Cloudflare publishes
+./scripts/build.sh
+python3 -m http.server --directory dist 8000
 ```
 
 ## Architecture
-- `index.html` + `styles.css` — the entire site. Keep it that way.
+- `index.html` + `styles.css` — the hand-authored landing page. Do not route it
+  through MkDocs or change its output as part of documentation work.
 - `fonts/jetbrains-mono-latin.woff2` — self-hosted JetBrains Mono (latin subset,
   variable weight, ~31 KB). The only binary asset; no external font requests.
+- `docs/` + `mkdocs.yml` — public documentation source and navigation. MkDocs
+  builds it with strict warnings and directory URLs under `dist/docs/`.
+- `public/` — Cloudflare Pages control files and the root 404 page. These are
+  copied explicitly; it is not a general-purpose static-assets directory.
+- `scripts/build.sh` — removes `dist/`, copies only approved landing/Cloudflare
+  files, builds the docs, and verifies the artifact boundary.
+- `dist/` — generated deploy output. Never edit or commit it.
 - `DESIGN.md` — brand + design reference. **Read it before touching copy or CSS**;
   it is the source of truth for tokens, type, voice, and page structure.
 - `Ködade Brand.dc.html` — logo exploration archive (decision landed: double-dot
@@ -36,11 +49,19 @@ python3 -m http.server 8000   # then http://localhost:8000
 - Voice: plain, technical, confident. No emoji, no exclamation marks, no
   "blazingly", no overpromising ("ködade orchestrates CLIs; the CLIs do the work").
   One allowed flourish: umlaut wordplay in headlines.
-- Performance is credibility: static HTML, no framework, total page < 200 KB,
-  no cookie banner, no analytics scripts that need one.
+- Performance is credibility: static output, no frontend framework, landing
+  page < 200 KB, no cookie banner, no analytics scripts that need one.
+- Run `./scripts/build.sh` before committing documentation or deployment changes.
+  Warnings fail the build. Do not loosen strict mode to land content.
+- Keep documentation task-oriented and progressively disclosed: one interface
+  for new users and experienced engineers, not separate beginner/expert modes.
+- Product behavior must come from the current `kodade` app implementation and
+  tests. Windows is in development; do not claim availability or parity.
 - No gradients, no glassmorphism, no mascots, never restyle provider logos.
 
 ## Out of Scope
-- No build tooling, frameworks, or npm — plain HTML/CSS (JS only if trivial and inline).
-- No blog, docs section, or multi-page structure — landing page only.
-- The product app itself (and PLAN.md) live elsewhere; this repo never grows app code.
+- No frontend framework or npm. The landing page remains plain HTML/CSS (JS only
+  if trivial and inline); MkDocs is the documentation build dependency.
+- No app code. The product implementation and PLAN.md live in the `kodade` repo.
+- No broad repository copies into `dist/`; every non-MkDocs root artifact must
+  be explicitly allowlisted in `scripts/build.sh`.
