@@ -1,7 +1,7 @@
 # Troubleshooting
 
-Start with the symptom you can see. The steps below match the current macOS
-pre-release build.
+Start with the symptom you can see. The platform-specific steps below match the
+current pre-release builds.
 
 ## macOS blocks the test build
 
@@ -29,6 +29,29 @@ xattr -dr com.apple.quarantine /Applications/kodade.app
 
 See [Platform and release status](platform-status.md) before treating any build
 as ready for distribution.
+
+## Windows preview warnings and setup
+
+**Symptom:** Windows SmartScreen warns that the publisher is unknown.
+
+This is expected for an unsigned preview build. Verify the build source before
+continuing.
+
+**Symptom:** the window does not open, or WebView2 reports an error.
+
+Install or repair the Evergreen WebView2 Runtime, then relaunch ködade.
+
+**Symptom:** ködade opens Windows PowerShell instead of PowerShell 7.
+
+Install `pwsh`, then restart ködade so it can resolve the updated user `PATH`.
+
+**Symptom:** an agent CLI is not detected.
+
+Confirm the CLI runs in a fresh terminal for the same Windows user, including
+any npm `.cmd` shim, then restart ködade.
+
+For remote or browser-client issues, see [KödSSH](../features/kodssh.md) or
+[KödWeb](../features/kodweb.md).
 
 ## A project does not open at a working prompt
 

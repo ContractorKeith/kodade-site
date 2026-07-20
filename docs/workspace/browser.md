@@ -1,7 +1,8 @@
 # Use the embedded browser
 
 The browser opens a web page beside your terminals without turning the page
-into part of ködade's app interface. It is currently available on macOS only.
+into part of ködade's app interface. It ships in the macOS build; the Windows
+build includes a pre-release implementation that is still in release QA.
 
 ## Open a page
 
@@ -25,9 +26,10 @@ refused.
 Downloads are blocked. Requests to open a popup or new window are denied.
 
 !!! note
-    The embedded browser is not available on Windows today. Windows support is
-    in development; there is no published browser availability date or feature
-    parity claim.
+    The Windows embedded browser is pre-release: human visual and release QA
+    remain pending, and this page makes no feature-parity or availability-date
+    claim for it. In KödWeb browser sessions the embedded browser pane is not
+    available on any platform, because it is a native desktop surface.
 
 ## Browser security boundary
 

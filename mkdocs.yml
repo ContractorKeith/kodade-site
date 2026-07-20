@@ -41,6 +41,16 @@ nav:
       - Preview files: workspace/previews.md
       - View GitHub work: workspace/github.md
       - Use the embedded browser: workspace/browser.md
+  - Köd features:
+      - Free and Pro: features/free-and-pro.md
+      - KödHarness: features/kodharness.md
+      - KödWhisper: features/kodwhisper.md
+      - Köd Workspace and KödMem: features/kodmem.md
+      - KödMCP: features/kodmcp.md
+      - KödPR: features/kodpr.md
+      - KödSSH: features/kodssh.md
+      - KödWeb: features/kodweb.md
+      - KödLocal: features/kodlocal.md
   - Personalize:
       - Settings and themes: personalize/settings-themes.md
       - Keyboard shortcuts: personalize/keyboard-shortcuts.md
