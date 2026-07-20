@@ -6,9 +6,10 @@ stays on loopback and exposes a plain OpenAI-compatible endpoint at
 
 > **Pre-release status**
 >
-> There is no public download. Current macOS builds are unsigned test builds,
-> and Windows human QA remains pending. See [platform and release
-> status](../support/platform-status.md).
+> There is no public download. Current macOS and Windows builds are unsigned
+> test builds, the macOS build is not notarized, Windows human release QA is
+> in progress, and Pro licenses are not yet for sale. See [platform and
+> release status](../support/platform-status.md).
 
 ## Run a model on your machine
 
@@ -24,8 +25,9 @@ The daemon accepts local clients only. It is not a public model server.
 ## Use the free local-model tools
 
 The free tier includes a desktop model manager and `kodade-local` for local
-chat. The manager can download curated models with checksum verification, add
-your own model files, load or unload a model, and report memory information.
+chat. The manager can download curated GGUF models with checksum verification,
+add your own GGUF files or MLX model directories, load or unload a model, and
+report memory information.
 
 Raw generation is also available through the loopback OpenAI-compatible Chat
 Completions endpoint. That endpoint is useful for plain local generation. It is
@@ -53,6 +55,9 @@ endpoint and select it for one KödLocal session. Before a non-local launch,
 ködade warns that prompts, project context, KödMem context, and enabled agent
 requests will be sent to that endpoint. Use a backend whose operator and
 privacy policy you trust.
+
+A saved backend cannot store an API key, and credentials in URLs are rejected.
+Use an endpoint protected by its own network or authentication gateway.
 
 ## Set realistic expectations
 

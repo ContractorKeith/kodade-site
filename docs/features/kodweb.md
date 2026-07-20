@@ -7,8 +7,9 @@ files, and project memory stay on the machine running the server.
 > **Pre-release status**
 >
 > There is no public download. The hosted shell at `app.kodade.com` may not be
-> live during pre-release. Current macOS builds are unsigned test builds, and
-> Windows human QA remains pending. See [platform and release
+> live during pre-release. Current macOS and Windows builds are unsigned test
+> builds, the macOS build is not notarized, Windows human release QA is in
+> progress, and Pro licenses are not yet for sale. See [platform and release
 > status](../support/platform-status.md).
 
 ## Start a local server and pair a browser

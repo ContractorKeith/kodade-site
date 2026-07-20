@@ -5,9 +5,10 @@ should outlive a terminal session. Both stay local to your machine.
 
 > **Pre-release status**
 >
-> There is no public download. Current macOS builds are unsigned test builds,
-> and Windows human QA remains pending. See [platform and release
-> status](../support/platform-status.md).
+> There is no public download. Current macOS and Windows builds are unsigned
+> test builds, the macOS build is not notarized, Windows human release QA is
+> in progress, and Pro licenses are not yet for sale. See [platform and
+> release status](../support/platform-status.md).
 
 ## See work at the right density
 

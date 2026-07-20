@@ -6,15 +6,17 @@ stdio process and reads the local KödMem database directly.
 
 > **Pre-release status**
 >
-> There is no public download. Current macOS builds are unsigned test builds,
-> and Windows human QA remains pending. See [platform and release
-> status](../support/platform-status.md).
+> There is no public download. Current macOS and Windows builds are unsigned
+> test builds, the macOS build is not notarized, Windows human release QA is
+> in progress, and Pro licenses are not yet for sale. See [platform and
+> release status](../support/platform-status.md).
 
 ## What the server does
 
 An MCP client launches `kodade-mcp` for a registered project. The server can
 return current focus, checkpoints, decisions, tasks, and full-text memory
-searches. With permission, it can also record a typed memory or checkpoint.
+searches. With permission, it can also create, revise, or delete typed
+memories, record checkpoints, and report that a session needs your attention.
 
 The server works while the ködade desktop UI is closed. It opens no network
 port and requires no token or other shared secret. Its trust boundary is the

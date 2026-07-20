@@ -8,10 +8,11 @@ coordination, automation, or scope.
 
 > **Pre-release status**
 >
-> There is no public download yet. Current macOS builds are unsigned test
-> builds, Windows human QA is still pending, and Pro licenses are not yet for
-> sale. These tiers describe the product, not a store. See [platform and
-> release status](../support/platform-status.md).
+> There is no public download. Current macOS and Windows builds are unsigned
+> test builds, the macOS build is not notarized, and Windows human release QA
+> is in progress. Pro licenses are not yet for sale — these tiers describe the
+> product, not a store. See [platform and release
+> status](../support/platform-status.md).
 
 ## What stays free
 

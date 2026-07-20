@@ -9,10 +9,12 @@ the network under their own terms when you run or open them.
 
 ## What ködade stores
 
-On macOS, ködade writes one local metadata file:
+ködade writes its workspace metadata to one local file in your user
+application-data directory:
 
 ```text
-~/Library/Application Support/com.kodade.desktop/kodade.json
+~/Library/Application Support/com.kodade.desktop/kodade.json   (macOS)
+%APPDATA%\com.kodade.desktop\kodade.json                       (Windows)
 ```
 
 The file can contain:
@@ -25,7 +27,11 @@ The file can contain:
   embedded browser tab's last URL
 
 `kodade.json` is workspace metadata, not a copy of your projects. Your source
-files stay in the folders you added.
+files stay in the folders you added. Separate local stores exist for specific
+features: KödMem uses its own SQLite database in the same application-data
+directory, downloaded KödWhisper and KödLocal models are ordinary local files,
+and an activated Pro license adds a local token. See the feature sections
+below.
 
 !!! note "Paths and browser URLs are local data too"
 
@@ -63,7 +69,7 @@ leaves your machine.
 
 [KödLocal](../features/kodlocal.md) inference is loopback-local by default. If
 you choose a remote backend in Pro, prompts and context go to that endpoint;
-ködade warns before the first non-local launch.
+ködade warns before every non-local launch.
 
 [License verification](../features/free-and-pro.md) is offline. ködade does not
 phone home.
