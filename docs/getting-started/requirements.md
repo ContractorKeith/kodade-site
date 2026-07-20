@@ -1,20 +1,35 @@
 # Requirements and release status
 
-## Current platform
+## Current platforms
 
-The current ködade release path requires:
+The macOS pre-release build path requires:
 
 - macOS 13 or newer
 - an Apple silicon Mac
 - a project folder you can access from your macOS user account
 
-Windows support is in development. No Windows release date or feature-parity
-claim is available.
+The Windows pre-release build path requires:
+
+- x64 Windows 10 version 1809 or newer, or Windows 11
+- the WebView2 Evergreen Runtime; the installer embeds its bootstrapper and may
+  need an internet connection if the runtime is missing
+- a project folder you can access from your Windows user account
+
+The Windows installer is per-user and does not require administrator access.
+Unsigned preview builds trigger a SmartScreen confirmation. ködade uses your
+normal Windows shell, preferring PowerShell 7 (`pwsh`), then Windows PowerShell,
+then `cmd`.
+
+## Browser path
+
+With [KödWeb](../features/kodweb.md), a box running `kodade-serve` can be used
+from a modern browser.
 
 ## Installation status
 
 ködade is still in pre-release testing. There is no public installer or download
-yet, and the current macOS build is not signed or notarized.
+yet. The macOS and Windows builds are unsigned; the macOS build is also not
+notarized.
 
 > **Before following the guides**
 >

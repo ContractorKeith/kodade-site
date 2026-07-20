@@ -7,9 +7,8 @@ the selected project folder.
 
 > **Pre-release status**
 >
-> There is no public download yet. The current release path is for Apple silicon
-> Macs running macOS 13 or newer, and the build is not yet signed or notarized.
-> Windows support is in development; it is not currently available.
+> There is no public download yet. Pre-release builds exist for Apple silicon
+> Macs and Windows x64; both are unsigned, and the macOS build is not notarized.
 
 ## Begin with a project
 
@@ -30,6 +29,24 @@ sign in to agent providers for you.
   switching, closing, and dropping paths into terminals.
 - [Agent CLIs](core/agent-clis.md) explains installation detection, version
   reporting, authentication boundaries, and manual launch.
+
+## Beyond the core workspace
+
+- [KödHarness](features/kodharness.md) shows what an agent CLI will read before
+  it runs.
+- [KödWhisper](features/kodwhisper.md) adds local voice input for agent prompts.
+- [Köd Workspace and KödMem](features/kodmem.md) keep activity and durable
+  project memory visible and local.
+- [KödMCP](features/kodmcp.md) gives agent tools controlled access to KödMem.
+- [KödPR](features/kodpr.md) provides an in-app surface for reading changes
+  before they ship.
+- [KödSSH](features/kodssh.md) connects the workspace to agent CLIs on a remote
+  machine.
+- [KödWeb](features/kodweb.md) connects a browser to a box running
+  `kodade-serve`.
+- [KödLocal](features/kodlocal.md) runs a local model through the bundled
+  daemon.
+- [Free and Pro](features/free-and-pro.md) explains the available feature tiers.
 
 ## What survives a restart
 

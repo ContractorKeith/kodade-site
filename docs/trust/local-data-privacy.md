@@ -1,6 +1,6 @@
 # Local data and privacy
 
-ködade keeps its own workspace state on your Mac. It does not currently have
+ködade keeps its own workspace state on your computer. It does not currently have
 a ködade cloud account, telemetry, analytics, a hosted agent API, or an automatic
 updater.
 
@@ -50,6 +50,23 @@ Open-tab metadata may restore a tab after restart, but the file is read again
 from disk; its unsaved buffer is not restored. Save work before quitting. See
 [Projects and workspace layout](../core/projects.md#understand-local-persistence)
 for the full persistence table.
+
+## Köd features and local data
+
+[KödMem](../features/kodmem.md) stores activity metadata and memory records
+locally in SQLite. By default, it does not capture terminal transcripts,
+keystrokes, file contents, environment variables, clipboard contents, or
+credentials. Memories are visible in the app and can be edited or deleted.
+
+[KödWhisper](../features/kodwhisper.md) processes voice audio locally; no audio
+leaves your machine.
+
+[KödLocal](../features/kodlocal.md) inference is loopback-local by default. If
+you choose a remote backend in Pro, prompts and context go to that endpoint;
+ködade warns before the first non-local launch.
+
+[License verification](../features/free-and-pro.md) is offline. ködade does not
+phone home.
 
 ## Accounts and credentials
 

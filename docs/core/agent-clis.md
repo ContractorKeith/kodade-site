@@ -68,3 +68,14 @@ provides the terminal session and project working directory.
 
 See [Terminal sessions](terminal-sessions.md) to create a dedicated session,
 rename it, or switch between concurrent tools.
+
+## Related local features
+
+[KödLocal](../features/kodlocal.md) can also run a local model as a provider.
+Its models run on your machine through the bundled daemon, with no account or
+API key.
+
+[KödHarness](../features/kodharness.md) lets you inspect the instructions,
+skills, and MCP servers each detected CLI will read before it runs.
+
+[KödWhisper](../features/kodwhisper.md) adds local voice input for agent prompts.

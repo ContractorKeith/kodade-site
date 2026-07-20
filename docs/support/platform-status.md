@@ -6,14 +6,14 @@ ködade is in pre-release testing. There is no public installer or download yet.
 
 | Platform | Status |
 | --- | --- |
-| macOS 13 or newer | Current development and test platform |
-| Apple silicon Mac | Current pre-release build path |
+| macOS 13 or newer, Apple silicon | Pre-release build path; unsigned and not notarized |
 | Intel Mac | No current release build |
-| Windows | In development; not currently available |
+| Windows 10 version 1809 or newer, or Windows 11 (x64) | Pre-release build path; unsigned, with human release QA in progress |
+| Browser (KödWeb) | Client for a self-hosted `kodade-serve` daemon; ships with the app builds |
 
-No Windows release date or feature-parity commitment is available. Features
-that depend on macOS integration, including the current embedded browser, still
-need platform-specific work before they can be described as available on Windows.
+The Windows app exists and is exercised in automated verification. Signing and
+human release QA remain before public availability. This page makes no Windows
+release-date or feature-parity commitment.
 
 ## macOS test builds
 
@@ -35,6 +35,12 @@ The current requirements are:
 The terminal works without an agent CLI. See [Requirements and release
 status](../getting-started/requirements.md) and [Your first
 project](../getting-started/first-project.md).
+
+## Pro licensing
+
+ködade has free and Pro tiers. Activation uses a one-time license token in
+Settings that the app verifies offline. Licenses are not yet on sale during
+pre-release. See [Free and Pro](../features/free-and-pro.md).
 
 ## Updates
 
