@@ -1,8 +1,10 @@
 # Free and Pro
 
-ködade's core workspace is free. You can add projects, run real terminal
-sessions, use workspace tools, and launch the agent CLIs you installed yourself.
-Köd features add focused local workflows around that workspace. Each has a free
+ködade's core workspace is free, with no account or login: projects, real
+terminal sessions, KödChat as the primary surface for the agent CLIs you
+installed yourself, the editor and file tree, the GitHub tab and browser pane,
+and Light/Dark/System themes. Köd features add focused local workflows around
+that workspace. Each has a free
 slice that is useful on its own and a Pro slice for the work that needs more
 coordination, automation, or scope.
 
@@ -10,7 +12,8 @@ coordination, automation, or scope.
 >
 > There is no public download. Current macOS and Windows builds are unsigned
 > test builds, the macOS build is not notarized, and Windows human release QA
-> is in progress. Pro licenses are not yet for sale — these tiers describe the
+> is in progress. The initial public release targets macOS and self-hosted web
+> (KödWeb); Windows follows after release QA. Pro licenses are not yet for sale — these tiers describe the
 > product, not a store. See [platform and release
 > status](../support/platform-status.md).
 
@@ -20,7 +23,8 @@ The free tier includes the core workspace and the following feature slices.
 
 | Feature | Free | Pro |
 | --- | --- | --- |
-| [KödHarness](kodharness.md) | Inspect the active project for the primary CLI | Compare CLIs and scopes; make reversible configuration changes |
+| KödChat | Full chat workspace over your installed agent CLIs | No separate Pro slice |
+| [KödHarness](kodharness.md) | Inspect the active project for the primary CLI | Compare CLIs and scopes, reversible configuration changes, and the KödSkills pack |
 | [KödWhisper](kodwhisper.md) | Local push-to-talk dictation and model management | Prompt cleanup, vocabulary, voice commands, streaming, and larger models |
 | [Köd Workspace and KödMem](kodmem.md) | Adaptive work list and local project memory | No separate Pro slice currently |
 | [KödMCP](kodmcp.md) | Local memory access for connected agents | No separate Pro slice currently |
