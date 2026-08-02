@@ -342,8 +342,8 @@ a {
   z-index: 1;
 }
 
-/* Screen-reader-only text (keeps the accessible "döts" word for the aria-hidden
-   decorative treatment). */
+/* Screen-reader-only text keeps the full tagline available beside the
+   aria-hidden visual treatment. */
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -356,10 +356,9 @@ a {
   width: 1px;
 }
 
-/* Treatment B -- dither-textured accent word "döts": real JetBrains Mono bold
-   filled with an amber Bayer checker via background-clip:text. Umlaut dots are
-   the natural glyph dots, so the word reads instantly at any size. */
-.dots-accent {
+/* Dither-textured headline accent: real JetBrains Mono bold filled with an
+   amber Bayer checker via background-clip:text. */
+.headline-accent {
   background-image: conic-gradient(
     rgba(var(--dither-amber), 1) 25%,
     rgba(var(--dither-amber), 0.4) 0 50%,
@@ -373,7 +372,7 @@ a {
 }
 /* Fallback: where background-clip:text is unsupported, show a solid amber word. */
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-  .dots-accent {
+  .headline-accent {
     background: none;
     color: var(--accent);
   }

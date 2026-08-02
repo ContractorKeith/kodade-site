@@ -1,7 +1,7 @@
 # kodade.com/docs — documentation plan
 
 Implementation plan for issue #8. Product behavior is sourced from the current
-`ContractorKeith/kodade` implementation and tests, not from stale milestone text
+`Kodade/kodade` implementation and tests, not from stale milestone text
 in that repository's README or PLAN.md.
 
 ## Outcome
@@ -22,13 +22,15 @@ availability and security boundaries.
 1. **Start here** — what ködade is, requirements, installation status, first project.
 2. **Core workflow** — projects and layout, terminal sessions, agent CLIs.
 3. **Workspace tools** — files, editor, previews, GitHub, browser.
-4. **Personalize** — Settings, themes, and keyboard shortcuts.
-5. **Trust and support** — local data, privacy/security, troubleshooting, platform status.
+4. **Agent workspace** — KödHarness, KödMem, and KödMCP.
+5. **Personalize** — Settings, themes, and keyboard shortcuts.
+6. **Trust and support** — open-source licensing, local data,
+   privacy/security, troubleshooting, and platform status.
 
 ## Product truth to preserve
 
-- macOS 13 or newer is the current target. The release path is Apple silicon;
-  the public build is not yet signed or notarized.
+- macOS 13 or newer on Apple silicon is available from the public GitHub
+  release. Other Mac architectures must not be implied.
 - Adding a project starts a real login-shell terminal in that folder. Users run
   their installed and authenticated agent CLIs manually.
 - Projects, layouts, theme, sidebar mode, and tab metadata persist locally.
@@ -38,7 +40,13 @@ availability and security boundaries.
   the app's IPC bridge. Downloads and popups are blocked.
 - File-manager mutations and document previews are confined to the project, but
   shells and agents keep the user's normal operating-system permissions.
-- Windows is in development. Do not claim availability, dates, or feature parity.
+- Windows is targeted for the first week of August 2026. Do not claim it is
+  available or has feature parity until its public artifact exists.
+- Linux is planned without a committed release date.
+- The public release is Apache-2.0 and has no Free/Pro product split.
+- KödSSH, KödWhisper, KödLocal, and KödPR are outside the public release and
+  remain development lanes. KödWeb is outside the release and is no longer in
+  development.
 
 ## Build and deployment architecture
 

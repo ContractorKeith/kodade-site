@@ -11,18 +11,15 @@ The first time you add or activate a project with no live sessions, ködade open
 one at the project root. Default names use your shell name and a number, such as
 `zsh 1` and `zsh 2`.
 
-To add another session:
-
-1. Use the full projects sidebar.
-2. Expand the project with its chevron.
-3. Select **+ new session**.
-
-You can also press `Command-T` while a project is active.
+Press **Command-T** while a project is active to add another session. You can
+also start a detected agent in a new terminal from the launch control in the
+full sidebar.
 
 ## Switch sessions
 
-Click a session row in the full projects sidebar. Selecting a session under a
-different project activates both that project and its terminal.
+Select a terminal workspace card in the full projects sidebar. Selecting a
+workspace under a different project activates both that project and its
+terminal.
 
 Only one terminal is visible at a time, but other sessions remain live. A steady
 status dot marks a live session. When ködade can identify a foreground command,
@@ -30,25 +27,25 @@ the row can temporarily show that process name and pulse its status dot.
 
 ## Rename a session
 
-Double-click a session row, enter a name, then press `Return` or click away to
-commit it. Press `Escape` to cancel. An empty name keeps the current name.
+Double-click the workspace name, enter a name, then press `Return` or click away
+to commit it. Press `Escape` to cancel. An empty name keeps the current name.
 
-A manual name takes priority over temporary foreground-process naming. Session
-names are runtime-only and do not survive an app restart.
+A manual name takes priority over temporary foreground-process naming. The
+session identity and manual name persist across an app restart.
 
 ## Close a session
 
-Hover over the session row and select **×**. Closing a session kills that
-session's shell. If you close the active session, ködade selects the newest
-remaining session for that project when one exists.
+Select **×** on the workspace card. Closing a session kills that session's
+shell. If you close the active session, ködade selects the newest remaining
+session for that project when one exists.
 
 If a shell exits on its own, its dimmed row remains so you can inspect the
 terminal output. Close that row when you are finished with it. After closing the
 last session, select **+ new session** or press `Command-T` to start another.
 
-Quitting ködade stops its live terminal sessions. On restart, a fresh shell may
-open for the active project; the previous shell, its process, name, and terminal
-output are not restored.
+Quitting ködade stops its live terminal processes. On restart, saved session
+identities reopen as fresh shells with their saved names. The previous process
+and terminal output are not restored.
 
 ## Paste paths by dragging
 

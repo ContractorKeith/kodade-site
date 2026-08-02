@@ -1,42 +1,28 @@
 # Requirements and release status
 
-## Current platforms
+## macOS requirements
 
-The macOS pre-release build path requires:
+The current public release requires:
 
 - macOS 13 or newer
 - an Apple silicon Mac
 - a project folder you can access from your macOS user account
 
-The Windows pre-release build path requires:
+## Install on macOS
 
-- x64 Windows 10 version 1809 or newer, or Windows 11
-- the WebView2 Evergreen Runtime; the installer embeds its bootstrapper and may
-  need an internet connection if the runtime is missing
-- a project folder you can access from your Windows user account
+1. Open the [ködade Releases
+   page](https://github.com/Kodade/kodade/releases).
+2. Download the macOS Apple-silicon `.dmg` from the latest release.
+3. Open the DMG and drag `kodade.app` into **Applications**.
+4. Open ködade from **Applications**.
 
-The Windows installer is per-user and does not require administrator access.
-Unsigned preview builds trigger a SmartScreen confirmation. ködade uses your
-normal Windows shell, preferring PowerShell 7 (`pwsh`), then Windows PowerShell,
-then `cmd`.
+Use only a release downloaded from the public repository. See
+[Troubleshooting](../support/troubleshooting.md) if the app does not open.
 
-## Browser path
+## Other platforms
 
-With [KödWeb](../features/kodweb.md), a box running `kodade-serve` can be used
-from a modern browser.
-
-## Installation status
-
-ködade is still in pre-release testing. There is no public installer or download
-yet. The macOS and Windows builds are unsigned; the macOS build is also not
-notarized.
-
-> **Before following the guides**
->
-> You need a current test build supplied through the project. These pages do not
-> provide a public installation package. If macOS blocks a trusted test build,
-> follow the limited local-testing steps in [Troubleshooting](../support/troubleshooting.md#macos-blocks-the-test-build);
-> those steps do not sign, notarize, or verify the app.
+- Windows is coming the first week of August 2026.
+- Linux support is planned; no release date has been set.
 
 ## Agent CLI requirements
 
@@ -44,10 +30,10 @@ An agent CLI is optional for using the terminal, but required for agent work.
 Install and authenticate each CLI separately using its provider's instructions.
 The executable must be available through your login shell's `PATH`.
 
-ködade currently checks for Claude Code, Codex, Grok, OpenCode, and Ollama. The
-check reports whether each executable returns version information. It does not
-install a CLI, update it, or confirm that its account authentication is valid.
-See [Agent CLIs](../core/agent-clis.md) for the exact workflow.
+KödChat currently supports Claude Code and Codex. ködade also detects Grok,
+OpenCode, and Ollama for terminal use. The check reports whether each executable
+returns version information; it does not install a CLI, update it, or confirm
+that its account authentication is valid. See [Agent
+CLIs](../core/agent-clis.md) for the exact workflow.
 
-When a current build is ready, continue with [Your first
-project](first-project.md).
+Continue with [Your first project](first-project.md).

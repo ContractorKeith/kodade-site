@@ -9,12 +9,11 @@ the network under their own terms when you run or open them.
 
 ## What ködade stores
 
-ködade writes its workspace metadata to one local file in your user
-application-data directory:
+ködade writes its core workspace metadata to the app's local application-data
+directory:
 
 ```text
-~/Library/Application Support/com.kodade.desktop/kodade.json   (macOS)
-%APPDATA%\com.kodade.desktop\kodade.json                       (Windows)
+~/Library/Application Support/com.kodade.desktop/kodade.json
 ```
 
 The file can contain:
@@ -25,13 +24,14 @@ The file can contain:
 - the selected theme and projects-sidebar mode
 - per-project open-tab metadata, including file paths, the GitHub tab, and an
   embedded browser tab's last URL
+- chat-thread identity and terminal-session identity
 
 `kodade.json` is workspace metadata, not a copy of your projects. Your source
-files stay in the folders you added. Separate local stores exist for specific
-features: KödMem uses its own SQLite database in the same application-data
-directory, downloaded KödWhisper and KödLocal models are ordinary local files,
-and an activated Pro license adds a local token. See the feature sections
-below.
+files stay in the folders you added.
+
+KödChat stores one transcript document per thread under the app-data `chats/`
+directory. KödMem uses a local SQLite database and, when enabled for a project,
+human-readable files under that project's `.kodade/memory/` directory.
 
 !!! note "Paths and browser URLs are local data too"
 
@@ -45,34 +45,31 @@ below.
 ködade does not write these items into `kodade.json`:
 
 - terminal output, prompt history, or running processes
-- terminal sessions or session names
 - unsaved editor buffers
 - project file contents
-- agent prompts and responses, except where a CLI or project file stores them
+- KödChat transcript text, which is kept in separate per-thread documents
+- prompts and responses from agents run manually in a terminal, except where
+  the CLI or project stores them
 - agent-provider or GitHub credentials
 
-Live terminal sessions and in-memory editor changes end when the app quits.
-Open-tab metadata may restore a tab after restart, but the file is read again
-from disk; its unsaved buffer is not restored. Save work before quitting. See
-[Projects and workspace layout](../core/projects.md#understand-local-persistence)
-for the full persistence table.
+Running terminal processes and in-memory editor changes end when the app quits.
+Terminal identities can reopen as fresh shells, and open-tab metadata can
+restore a tab, but terminal output and unsaved editor buffers are not restored.
+Save work before quitting. See [Projects and workspace
+layout](../core/projects.md#understand-local-persistence) for the full
+persistence table.
 
 ## Köd features and local data
 
 [KödMem](../features/kodmem.md) stores activity metadata and memory records
-locally in SQLite. By default, it does not capture terminal transcripts,
-keystrokes, file contents, environment variables, clipboard contents, or
-credentials. Memories are visible in the app and can be edited or deleted.
+locally in SQLite and can create readable project-memory files. By default, it
+does not capture terminal or KödChat transcripts, keystrokes, file contents,
+environment variables, clipboard contents, or credentials. Memories are
+visible in the app and can be edited or deleted.
 
-[KödWhisper](../features/kodwhisper.md) processes voice audio locally; no audio
-leaves your machine.
-
-[KödLocal](../features/kodlocal.md) inference is loopback-local by default. If
-you choose a remote backend in Pro, prompts and context go to that endpoint;
-ködade warns before every non-local launch.
-
-[License verification](../features/free-and-pro.md) is offline. ködade does not
-phone home.
+[KödChat](../core/kodchat.md) saves transcript text locally. It sends a prompt
+to the selected provider CLI when you submit a turn; the provider's own CLI then
+controls authentication, model traffic, and tool execution.
 
 ## Accounts and credentials
 
@@ -103,12 +100,12 @@ images render as links, and only an explicit click can open an absolute HTTP(S)
 URL. Relative links and `file:`, `javascript:`, and `data:` URLs are not opened
 from rendered Markdown. Read more in [Security boundaries](security.md#rendered-markdown).
 
-## Remove local metadata
+## Remove local data
 
 Removing a project from the projects sidebar removes its ködade metadata and
 stops its live sessions. It does not delete the project folder.
 
-To reset all ködade workspace metadata:
+To reset the core ködade workspace metadata:
 
 1. Save project files and quit ködade.
 2. In Finder, select **Go > Go to Folder**.
@@ -116,5 +113,10 @@ To reset all ködade workspace metadata:
 4. Move `kodade.json` somewhere safe as a backup, or move it to Trash.
 5. Reopen ködade and add the projects you want.
 
-This reset does not remove project files, CLI configuration, CLI credentials,
-or data stored by websites.
+To remove saved chat transcripts too, move the `chats` folder from the same
+application-data directory to Trash. KödMem records and project working-memory
+files have their own removal controls; deleting `kodade.json` does not remove
+them.
+
+These actions do not remove project source files, CLI configuration, CLI
+credentials, or data stored by websites.

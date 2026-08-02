@@ -3,13 +3,6 @@
 Köd Workspace helps you see active work. KödMem keeps the project context that
 should outlive a terminal session. Both stay local to your machine.
 
-> **Pre-release status**
->
-> There is no public download. Current macOS and Windows builds are unsigned
-> test builds, the macOS build is not notarized, Windows human release QA is
-> in progress, and Pro licenses are not yet for sale. See [platform and
-> release status](../support/platform-status.md).
-
 ## See work at the right density
 
 Köd Workspace replaces a uniform session list with adaptive session cards. A
@@ -25,13 +18,29 @@ session.
 
 ## Keep project memory local and inspectable
 
-KödMem stores project memory in a SQLite database in ködade's application-data
-directory. It uses full-text search and does not need a ködade account, cloud
-service, API key, or embedding provider.
+Enable KödMem for the active project from **settings > KödMem**. It creates
+human-readable working-memory files under `.kodade/memory/`:
 
-Memories are visible Markdown records. Each has a type, source, timestamps, and
-history. You can edit, export, or delete it. The KödMem tab can show a current
-focus, pinned decisions, open tasks, recent records, and search results.
+```text
+.kodade/memory/
+  STATE.md
+  WORKLOG.md
+  decisions.md
+```
+
+`STATE.md` keeps the current handoff concise. `WORKLOG.md` is an append-only
+checkpoint journal, and `decisions.md` records dated decisions. You can commit
+the directory with the project or keep it local with a managed `.gitignore`
+entry.
+
+The files are the portable source of truth. A local SQLite store indexes them
+for search and keeps activity, durable records, provenance, and checkpoint
+bookkeeping. KödMem does not need a ködade account, cloud service, API key, or
+embedding provider.
+
+Durable memories are visible records with a type, source, timestamps, and
+history. You can edit, export, or delete them. The KödMem view shows the readable
+working-memory files, checkpoint timeline, saved memories, and search results.
 
 ## Understand default capture
 
@@ -51,6 +60,7 @@ workspace-data boundary.
 
 ## Connect an agent when you choose
 
-KödMCP lets a compatible agent read relevant project memory and write an
-explicit checkpoint. It does not turn terminal output into an automatic memory
-stream. See [KödMCP](kodmcp.md) for the local connection model.
+KödMCP lets a compatible agent load project context, search memory, and write an
+explicit checkpoint. It does not turn terminal output or KödChat transcripts
+into an automatic memory stream. See [KödMCP](kodmcp.md) for the local
+connection model.

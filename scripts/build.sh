@@ -69,4 +69,6 @@ if find dist -type f \( -name '*.md' -o -name '*.dc.html' \) -print -quit | grep
 fi
 
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_site.py dist
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v scripts/test_validate_site.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v \
+  scripts/test_validate_site.py \
+  scripts/test_public_release_direction.py

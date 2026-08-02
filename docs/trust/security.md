@@ -86,10 +86,12 @@ described above. See [Previews](../workspace/previews.md).
 
 ## Release and update boundary
 
-The current test build is unsigned and not notarized. Gatekeeper warnings are
-expected for that build and are not evidence that it has passed Apple's release
-checks. Only open a test build you received through a source you trust.
+Download the public macOS DMG only from the
+[Kodade/kodade Releases page](https://github.com/Kodade/kodade/releases). Do not
+bypass Gatekeeper for a public release that macOS refuses to open; delete it and
+download a fresh copy from the repository.
 
-ködade has no automatic updater. Installing a newer test build is a manual
-replacement, so verify where it came from before opening it. Current availability
-is listed in [Platform and release status](../support/platform-status.md).
+ködade has no automatic updater. Installing a newer release is a manual
+replacement, so verify where it came from before opening it. Current
+availability is listed in [Platform and release
+status](../support/platform-status.md).

@@ -1,5 +1,5 @@
 site_name: ködade docs
-site_description: Documentation for the ködade Agentic Development Environment
+site_description: your agents. one window
 site_url: https://kodade.com/docs/
 docs_dir: docs
 site_dir: dist/docs
@@ -33,6 +33,7 @@ nav:
       - Your first project: getting-started/first-project.md
   - Core workflow:
       - Projects and workspace layout: core/projects.md
+      - KödChat: core/kodchat.md
       - Terminal sessions: core/terminal-sessions.md
       - Agent CLIs: core/agent-clis.md
   - Workspace tools:
@@ -41,20 +42,15 @@ nav:
       - Preview files: workspace/previews.md
       - View GitHub work: workspace/github.md
       - Use the embedded browser: workspace/browser.md
-  - Köd features:
-      - Free and Pro: features/free-and-pro.md
+  - Agent workspace:
       - KödHarness: features/kodharness.md
-      - KödWhisper: features/kodwhisper.md
       - Köd Workspace and KödMem: features/kodmem.md
       - KödMCP: features/kodmcp.md
-      - KödPR: features/kodpr.md
-      - KödSSH: features/kodssh.md
-      - KödWeb: features/kodweb.md
-      - KödLocal: features/kodlocal.md
   - Personalize:
       - Settings and themes: personalize/settings-themes.md
       - Keyboard shortcuts: personalize/keyboard-shortcuts.md
   - Trust and support:
+      - Open source and licensing: trust/open-source.md
       - Local data and privacy: trust/local-data-privacy.md
       - Security boundaries: trust/security.md
       - Troubleshooting: support/troubleshooting.md

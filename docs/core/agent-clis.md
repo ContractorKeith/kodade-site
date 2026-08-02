@@ -1,12 +1,13 @@
 # Agent CLIs
 
 ködade orchestrates command-line tools; the tools do the agent work. Install,
-update, and authenticate each agent CLI separately, then run it manually inside
-a ködade terminal.
+update, and authenticate each agent CLI separately. Claude Code and Codex can
+answer in KödChat or run interactively in a terminal. Other detected CLIs run
+in a terminal.
 
 ## What ködade detects
 
-The current Settings panel checks these executables:
+The current **settings > providers** section checks these executables:
 
 | Settings label | Executable |
 | --- | --- |
@@ -20,8 +21,8 @@ At startup, ködade asks each executable for its version through a non-interacti
 login shell. This lets the check use the same login-shell `PATH` that finds tools
 installed through common shell and package-manager setups.
 
-Open **settings**, find **agent CLIs**, and select **refresh** to run the checks
-again. Each entry reports a version or **not installed**.
+Open **settings > providers** and select **refresh** to run the checks again.
+Each entry reports a version or **not installed**.
 
 > **Detection has a narrow meaning**
 >
@@ -54,6 +55,15 @@ After installing or updating a CLI:
 4. Replace `codex` in those commands with your CLI's executable.
 5. Open **settings** and select **refresh**.
 
+## Start a KödChat thread
+
+KödChat runs Claude Code or Codex headlessly and renders the CLI's structured
+output in the workspace. Each thread has an explicit provider, model, and access
+level. It inherits the authentication you completed through that CLI.
+
+Select **+** beside a project under **KödChat**, or choose a default provider in
+**settings > KödChat**. See [KödChat](kodchat.md) for the complete workflow.
+
 ## Launch an agent manually
 
 In the project's terminal, enter the CLI command yourself:
@@ -69,13 +79,7 @@ provides the terminal session and project working directory.
 See [Terminal sessions](terminal-sessions.md) to create a dedicated session,
 rename it, or switch between concurrent tools.
 
-## Related local features
-
-[KödLocal](../features/kodlocal.md) can also run a local model as a provider.
-Its models run on your machine through the bundled daemon, with no account or
-API key.
+## Inspect agent configuration
 
 [KödHarness](../features/kodharness.md) lets you inspect the instructions,
 skills, and MCP servers each detected CLI will read before it runs.
-
-[KödWhisper](../features/kodwhisper.md) adds local voice input for agent prompts.

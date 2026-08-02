@@ -1,12 +1,12 @@
 # kodade-site
 
-Landing page and public documentation for **ködade**, an Agentic Development
-Environment (a macOS terminal app that orchestrates agent CLIs). The landing
-page stays hand-authored HTML/CSS; MkDocs builds the documentation. Both ship in
-one curated Cloudflare Pages artifact.
+Landing page and public documentation for **ködade**, an Apache-2.0 Agentic
+Development Environment that orchestrates agent CLIs in one desktop window. The
+landing page stays hand-authored HTML/CSS; MkDocs builds the documentation. Both
+ship in one curated Cloudflare Pages artifact.
 
 ## Status
-active — last touched 2026-07-13
+active — last touched 2026-08-02
 
 ## Commands
 ```bash
@@ -49,14 +49,19 @@ python3 -m http.server --directory dist 8000
 - Voice: plain, technical, confident. No emoji, no exclamation marks, no
   "blazingly", no overpromising ("ködade orchestrates CLIs; the CLIs do the work").
   One allowed flourish: umlaut wordplay in headlines.
+- Public tagline: **"your agents. one window"**. Do not restore earlier
+  "two döts" or "one workspace" taglines.
 - Performance is credibility: static output, no frontend framework, landing
   page < 200 KB, no cookie banner, no analytics scripts that need one.
 - Run `./scripts/build.sh` before committing documentation or deployment changes.
   Warnings fail the build. Do not loosen strict mode to land content.
 - Keep documentation task-oriented and progressively disclosed: one interface
   for new users and experienced engineers, not separate beginner/expert modes.
-- Product behavior must come from the current `kodade` app implementation and
-  tests. Windows is in development; do not claim availability or parity.
+- Product behavior must come from the current public `kodade` app implementation
+  and tests. macOS is available now; Windows is targeted for the first week of
+  August 2026 without a parity claim; Linux is planned.
+- The public release excludes KödSSH, KödWhisper, KödLocal, KödPR, and
+  KödWeb. The first four remain development lanes. KödWeb does not.
 - No gradients, no glassmorphism, no mascots, never restyle provider logos.
 
 ## Out of Scope

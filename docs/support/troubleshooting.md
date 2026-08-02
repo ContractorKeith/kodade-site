@@ -1,57 +1,24 @@
 # Troubleshooting
 
 Start with the symptom you can see. The platform-specific steps below match the
-current pre-release builds.
+current public macOS release.
 
-## macOS blocks the test build
+## macOS blocks the app
 
-**Symptom:** macOS says Apple cannot check ködade for malicious software, or the
-app cannot be opened because the developer cannot be verified.
+**Symptom:** macOS says the app is damaged, cannot be checked, or cannot be
+opened.
 
-The current test build is unsigned and not notarized. If you trust where the
-build came from:
+1. Delete that copy of the app and DMG.
+2. Download the latest DMG again from the public [GitHub Releases
+   page](https://github.com/Kodade/kodade/releases).
+3. Open the DMG and drag `kodade.app` into **Applications**.
+4. Open the app from **Applications**.
 
-1. Drag `kodade.app` into **Applications**.
-2. In Finder, Control-click or right-click the app and select **Open**.
-3. Select **Open** again in the confirmation dialog.
+Do not clear quarantine or bypass Gatekeeper for a public release. If a fresh
+official download still fails, capture the exact macOS message and open an
+issue in the [public repository](https://github.com/Kodade/kodade/issues).
 
-If Gatekeeper still blocks a trusted local test copy, you can clear quarantine
-for that copy:
-
-```sh
-xattr -dr com.apple.quarantine /Applications/kodade.app
-```
-
-!!! warning "Local testing only"
-
-    Clearing quarantine does not sign, notarize, or verify the app. Do not use
-    this command for a build whose source you cannot verify.
-
-See [Platform and release status](platform-status.md) before treating any build
-as ready for distribution.
-
-## Windows preview warnings and setup
-
-**Symptom:** Windows SmartScreen warns that the publisher is unknown.
-
-This is expected for an unsigned preview build. Verify the build source before
-continuing.
-
-**Symptom:** the window does not open, or WebView2 reports an error.
-
-Install or repair the Evergreen WebView2 Runtime, then relaunch ködade.
-
-**Symptom:** ködade opens Windows PowerShell instead of PowerShell 7.
-
-Install `pwsh`, then restart ködade so it can resolve the updated user `PATH`.
-
-**Symptom:** an agent CLI is not detected.
-
-Confirm the CLI runs in a fresh terminal for the same Windows user, including
-any npm `.cmd` shim, then restart ködade.
-
-For remote or browser-client issues, see [KödSSH](../features/kodssh.md) or
-[KödWeb](../features/kodweb.md).
+See [Platform and release status](platform-status.md) for supported downloads.
 
 ## A project does not open at a working prompt
 
@@ -78,7 +45,7 @@ the prompt appears, run `pwd` to verify it. See [Terminal sessions](../core/term
 
 ## An installed agent CLI shows **not installed**
 
-**Symptom:** the CLI works somewhere else, but **settings > agent CLIs** reports
+**Symptom:** the CLI works somewhere else, but **settings > providers** reports
 **not installed**.
 
 Detection runs `<command> --version` in a non-interactive login shell and gives

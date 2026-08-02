@@ -112,8 +112,8 @@ Scale (site/docs): 15 px body, 1.55 line-height; headings 1.25 ratio; UI chrome
 - Verbs first, lowercase UI labels where macOS allows ("open project", "new session").
 - Never overpromise agents: ködade *orchestrates* CLIs; the CLIs do the work.
 - No emoji, no exclamation marks, no "blazingly".
-- The one allowed flourish: umlaut wordplay in headlines. "two döts." is the
-  keeper; its second line is OPEN — "every agent." is rejected.
+- Public tagline: **"your agents. one window"**. It replaces the earlier
+  "two döts" headline.
 
 ---
 
@@ -127,9 +127,11 @@ Scale (site/docs): 15 px body, 1.55 line-height; headings 1.25 ratio; UI chrome
   headline accent. Build spec lives in SITE-PLAN.md.
 - Hero = the product: a real screenshot/screencast of the 4-pane window with a
   live prompt, not abstract 3D blobs.
-- Structure: hero + one-line pitch → "your subscriptions, one window" (provider
-  logos row) → 3 proof points (your real shell / any agent / 15 MB) → download.
-- CTA: "Download for macOS" in accent. One CTA, repeated at bottom.
+- Structure: hero + one-line pitch → supported agent CLIs → 3 proof points
+  (your real shell / any agent / Apache 2.0) → platform availability.
+- CTA: "Download for macOS" in accent, linked to the public GitHub release. One
+  primary CTA, repeated at bottom; Windows and Linux remain status labels until
+  their releases exist.
 - Performance is credibility: static HTML, no framework, < 200 KB, no cookie banner.
 
 ---

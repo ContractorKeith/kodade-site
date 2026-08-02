@@ -10,26 +10,27 @@ Select **+ add project** in the full projects sidebar and choose a folder. You
 can also drop a folder into the app outside a live terminal. Adding the same
 folder again selects its existing project instead of creating a duplicate.
 
-Click a project name or tile to switch to it. Its terminal, files, and editor
-workspace become active. Shells belonging to other projects keep running in the
-background.
+Click a project name or tile to switch to it. Its chats, terminal, files, and
+editor workspace become active. Shells belonging to other projects keep running
+in the background.
 
-The full sidebar can expand more than one project's session list. Use the
-chevron beside a project to show or hide its sessions, then click any session to
-activate that project and terminal together.
+The KödChat section is the full sidebar's project list. Use the chevron beside a
+project to show or hide its chat threads, then select a thread to activate that
+project and conversation. Live terminal workspaces appear below the project
+list.
 
 ## Arrange the workspace
 
 The desktop workspace has four panes from left to right:
 
 1. projects
-2. terminal
-3. files
-4. editor
+2. KödChat or terminal
+3. editor
+4. files
 
-Drag a separator to resize adjacent panes. The projects, files, and editor panes
-can collapse; the terminal remains the central work area. Double-click a
-separator to return it to its default position.
+Drag a separator to resize adjacent panes. The projects, editor, and files panes
+can collapse; the KödChat or terminal pane remains the central work area.
+Double-click a separator to return it to its default position.
 
 Pane sizes and collapsed states are stored per project. Switching projects can
 therefore restore a different layout for each folder.
@@ -38,14 +39,14 @@ therefore restore a different layout for each folder.
 
 Use the control in the projects header, or press `Command-B`, to switch between:
 
-- **Full sidebar** — project names, expandable session lists, project removal,
-  shortcuts, Settings, and About.
+- **Full sidebar** — project names and chat threads, terminal workspace cards,
+  project removal, shortcuts, Settings, and About.
 - **Compact sidebar** — a narrow rail of project tiles, plus add-project and
   Settings controls.
 
 The selected mode applies across the app and persists locally. In compact mode,
 click a project tile to switch projects; return to the full sidebar when you need
-its session rows.
+its chat threads and workspace cards.
 
 ## Set project colors
 
@@ -71,13 +72,16 @@ Removing a project does not delete or modify the folder on disk.
 
 | Persists locally | Does not survive restart |
 | --- | --- |
-| Added projects and project colors | Live terminal sessions and processes |
-| Last active project | Session names and session-list expansion |
+| Added projects and project colors | Live terminal processes |
+| Last active project | In-memory terminal output |
 | Per-project pane layout | Unsaved editor buffers |
-| Theme and full/compact sidebar mode | In-memory terminal output |
+| Theme and full/compact sidebar mode | Files attached to an unsent chat draft |
 | Per-project open-tab metadata | Text that exists only in an unsaved buffer |
+| KödChat thread metadata and transcripts | A running chat turn |
+| Terminal-session identity and manual names | The command that was running in a terminal |
 
 Open-tab metadata records what should be reopened; it does not store unsaved
 file contents. On restart, files are read again from disk.
 
-Next, learn how to manage [Terminal sessions](terminal-sessions.md).
+Next, start a [KödChat](kodchat.md) thread or manage [Terminal
+sessions](terminal-sessions.md).

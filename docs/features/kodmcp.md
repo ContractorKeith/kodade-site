@@ -4,19 +4,13 @@ KödMCP lets an agent CLI use the project memory in KödMem without sending that
 memory through a hosted service. The bundled `kodade-mcp` server runs as a local
 stdio process and reads the local KödMem database directly.
 
-> **Pre-release status**
->
-> There is no public download. Current macOS and Windows builds are unsigned
-> test builds, the macOS build is not notarized, Windows human release QA is
-> in progress, and Pro licenses are not yet for sale. See [platform and
-> release status](../support/platform-status.md).
-
 ## What the server does
 
 An MCP client launches `kodade-mcp` for a registered project. The server can
-return current focus, checkpoints, decisions, tasks, and full-text memory
-searches. With permission, it can also create, revise, or delete typed
-memories, record checkpoints, and report that a session needs your attention.
+return `STATE.md` with recent worklog entries, checkpoints, decisions, tasks,
+and full-text memory searches. With permission, it can also create, revise, or
+delete typed memories, record checkpoints, and report that a session needs your
+attention.
 
 The server works while the ködade desktop UI is closed. It opens no network
 port and requires no token or other shared secret. Its trust boundary is the
@@ -41,11 +35,11 @@ never replaces a whole third-party configuration file.
 Each connection is scoped to a project already registered in ködade. A client
 cannot select an arbitrary filesystem path through an MCP request. You can make
 a connection read-only, revoke it, review recent reads and writes, export
-memory, or delete it from the app.
+memory, or delete its records from the app.
 
 Every memory mutation records its source and timestamp. KödMem does not
-automatically capture raw terminal transcripts and guards against oversized or
-likely credential-bearing writes. Read [Köd Workspace and KödMem](kodmem.md)
-for what the local database contains, and [security
+automatically capture raw terminal or KödChat transcripts and guards against
+oversized or likely credential-bearing writes. Read [Köd Workspace and
+KödMem](kodmem.md) for what the local files and database contain, and [security
 boundaries](../trust/security.md) for the separate permissions of the terminal
 and agent CLI.

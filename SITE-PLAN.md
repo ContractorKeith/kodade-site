@@ -14,9 +14,7 @@ Decisions locked 2026-07-11:
    (DESIGN.md § 6 amended to match.)
 3. **Subtle CSS motion** — blinking block cursor, accent-dot pulse, slow
    dither shimmer. All behind `prefers-reduced-motion`.
-4. **Build now, copy later** — current copy is placeholder. Known: headline
-   keeps "two döts." as line one; "every agent." is OUT as line two.
-   Copywriting is its own non-blocking ticket (#6).
+4. **Public tagline** — the headline is "your agents. one window".
 
 ---
 
@@ -34,8 +32,8 @@ Everything below is pure CSS (gradients + masks + grids). Zero image bytes.
 
 **Pushing further than the mock (the "full commitment" additions):**
 
-- **Pixel-rendered headline accent** — the accent word in the H1 (currently
-  "döts") is drawn as actual pixel-grid letterforms or dither-masked type, not
+- **Pixel-rendered headline accent** — the accent word in the H1 is drawn as
+  actual pixel-grid letterforms or dither-masked type, not
   just recolored. Constraint: NO third font family — achieve it with CSS
   grids, inline SVG, `clip-path: polygon()` stair-stepping, or dither-pattern
   `background-clip: text`. Implementer prototypes, we pick.
@@ -53,18 +51,18 @@ Everything below is pure CSS (gradients + masks + grids). Zero image bytes.
 
 1. **Nav** — pixel-umlaut wordmark left; docs / github / amber CTA right.
 2. **Hero** — dither field halo behind centered headline; pixel stairs top-right
-   and mid-left; H1 "two döts." + OPEN second line; lede; amber CTA +
-   `15 MB · Apple Silicon · free` meta line in mono.
+   and mid-left; H1 "your agents. one window"; lede; amber macOS download CTA.
 3. **Product window mock** — the existing 4-pane mock restyled: squared,
    hard offset shadow, double dither glow behind it, blinking cursor,
    pulsing session dot.
 4. **Halftone ramp seam.**
 5. **Proof points** — 3-up grid on ink-950, 1 px `#24262A` gutters, mono
-   headings (your real shell / any agent* / 15 MB). *copy pending #6.
-6. **Agent strip** — "your subscriptions, one window" + CLI names as plain
+   headings (your real shell / any agent / Apache 2.0).
+6. **Agent strip** — supported CLI names as plain
    text rows (never restyled logos).
 7. **Pixel-stair seam.**
-8. **Download** — repeated CTA, disabled state until a build exists.
+8. **Download** — repeated macOS release CTA, Windows first-week-of-August 2026
+   status, and Linux planned status.
 9. **Footer** — minimal: wordmark dots, copyright, nothing else.
 
 ## 3. Motion spec (CSS only)
