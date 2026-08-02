@@ -49,7 +49,8 @@ Everything below is pure CSS (gradients + masks + grids). Zero image bytes.
 
 ## 2. Page structure (top → bottom, all on ink-950)
 
-1. **Nav** — pixel-umlaut wordmark left; docs / github / amber CTA right.
+1. **Nav** — pixel-umlaut wordmark left; docs / GitHub / 𝕏 / amber CTA
+   right. The public social profile is `@kodadeapp`.
 2. **Hero** — dither field halo behind centered headline; pixel stairs top-right
    and mid-left; H1 "your agents. one window"; lede; amber macOS download CTA.
 3. **Product window mock** — the existing 4-pane mock restyled: squared,

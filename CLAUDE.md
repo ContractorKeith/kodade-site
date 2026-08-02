@@ -51,6 +51,8 @@ python3 -m http.server --directory dist 8000
   One allowed flourish: umlaut wordplay in headlines.
 - Public tagline: **"your agents. one window"**. Do not restore earlier
   "two döts" or "one workspace" taglines.
+- Public links: `https://github.com/Kodade/kodade` and the official 𝕏 account
+  `https://x.com/kodadeapp` (`@kodadeapp`).
 - Performance is credibility: static output, no frontend framework, landing
   page < 200 KB, no cookie banner, no analytics scripts that need one.
 - Run `./scripts/build.sh` before committing documentation or deployment changes.

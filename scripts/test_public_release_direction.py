@@ -24,6 +24,10 @@ class PublicReleaseDirectionTests(unittest.TestCase):
             "first week of august 2026",
             "linux is planned",
             "https://github.com/kodade/kodade/releases",
+            '<meta name="twitter:site" content="@kodadeapp">',
+            '<a href="https://github.com/kodade/kodade">github</a>',
+            '<a href="https://x.com/kodadeapp" rel="me" '
+            'aria-label="ködade on 𝕏 (@kodadeapp)">𝕏</a>',
         ):
             self.assertIn(expected, landing)
 
