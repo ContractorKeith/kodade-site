@@ -24,7 +24,7 @@ class PublicReleaseDirectionTests(unittest.TestCase):
             "first week of august 2026",
             "linux is planned",
             "https://github.com/kodade/kodade/releases",
-            "https://github.com/kodade/kodade/releases/download/v1.5.1/kodade_1.5.1_aarch64.dmg",
+            "https://github.com/kodade/kodade/releases/download/v1.6.1/kodade_1.6.1_aarch64.dmg",
             '<meta name="twitter:site" content="@kodadeapp">',
             '<a href="https://github.com/kodade/kodade">github</a>',
             '<a href="https://x.com/kodadeapp" rel="me" '
