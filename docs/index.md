@@ -8,8 +8,8 @@ use into one workspace.
 
 ködade is [open source under Apache License
 2.0](trust/open-source.md). The macOS app is available now from
-[GitHub Releases](https://github.com/Kodade/kodade/releases). Windows is coming
-the first week of August 2026, and Linux is planned.
+[GitHub Releases](https://github.com/Kodade/kodade/releases). Windows has no
+current release package, and Linux is planned.
 
 ## Begin with a project
 
@@ -36,6 +36,8 @@ sign in to agent providers for you.
 
 ## Beyond the core workspace
 
+- [KödWork](features/kodwork.md) runs durable background tasks and holds their
+  progress, permission requests, and file output for review.
 - [KödHarness](features/kodharness.md) shows what an agent CLI will read before
   it runs.
 - [Köd Workspace and KödMem](features/kodmem.md) keep activity and durable

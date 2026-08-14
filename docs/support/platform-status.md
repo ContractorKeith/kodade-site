@@ -9,7 +9,7 @@ or required ködade account.
 | --- | --- |
 | macOS 13 or newer, Apple silicon | Available now as a DMG from [GitHub Releases](https://github.com/Kodade/kodade/releases) |
 | Intel Mac | No current release build |
-| Windows | Coming the first week of August 2026 |
+| Windows | No current release package |
 | Linux | Planned; no release date set |
 
 The current supported release is the Apple-silicon macOS app. Windows and Linux
@@ -49,8 +49,8 @@ from public release builds:
 | KödSSH | In development |
 | KödWhisper | In development |
 | KödLocal | In development |
-| KödPR | In development |
 | KödWeb | Discontinued; no longer under development |
 
-These are not usable public features. Their source or historical engineering
-documents do not change that release boundary.
+These are not usable public features. KödWork and KödPR are included in the
+supported public app. Source or historical engineering documents do not change
+the remaining release boundary.

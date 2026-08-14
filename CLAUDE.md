@@ -60,10 +60,11 @@ python3 -m http.server --directory dist 8000
 - Keep documentation task-oriented and progressively disclosed: one interface
   for new users and experienced engineers, not separate beginner/expert modes.
 - Product behavior must come from the current public `kodade` app implementation
-  and tests. macOS is available now; Windows is targeted for the first week of
-  August 2026 without a parity claim; Linux is planned.
-- The public release excludes KödSSH, KödWhisper, KödLocal, KödPR, and
-  KödWeb. The first four remain development lanes. KödWeb does not.
+  and tests. macOS is available now; Windows has no current package; Linux is
+  planned.
+- The public release excludes KödSSH, KödWhisper, KödLocal, and KödWeb. The
+  first three remain development lanes. KödWeb does not. KödWork and KödPR are
+  supported public features.
 - No gradients, no glassmorphism, no mascots, never restyle provider logos.
 
 ## Out of Scope

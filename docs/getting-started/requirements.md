@@ -21,7 +21,7 @@ Use only a release downloaded from the public repository. See
 
 ## Other platforms
 
-- Windows is coming the first week of August 2026.
+- Windows has no current release package.
 - Linux support is planned; no release date has been set.
 
 ## Agent CLI requirements
