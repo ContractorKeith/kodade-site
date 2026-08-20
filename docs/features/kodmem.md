@@ -42,6 +42,23 @@ Durable memories are visible records with a type, source, timestamps, and
 history. You can edit, export, or delete them. The KödMem view shows the readable
 working-memory files, checkpoint timeline, saved memories, and search results.
 
+## Set up project knowledge
+
+New KödMem setups keep project knowledge in a git-ignored `.kodade/knowledge`
+directory inside the project, with zero setup. Enabling KödMem for a project
+creates the knowledge surface and its files in the same step, so there is
+nothing to choose and nothing to connect first.
+
+Sync with an Obsidian projects vault is the explicit option, collapsed under
+**settings > KödMem**. Switching a project from local knowledge to vault sync
+asks first and leaves the files already in `.kodade/knowledge` on disk.
+
+A project can only have one knowledge surface. Mapping a project to an Obsidian
+vault is refused while local project knowledge is on, and asks you to turn it
+off first. Existing vault setups are unchanged and keep their current screen; a
+project that had KödMem enabled before this release is never converted on its
+own and can set up local project knowledge with one click.
+
 ## Understand default capture
 
 KödMem records low-sensitivity activity metadata by default:

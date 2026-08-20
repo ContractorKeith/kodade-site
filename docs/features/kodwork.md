@@ -27,9 +27,11 @@ When a provider asks for permission, KödWork shows the exact operation in the
 task. Choose **Deny**, **Allow once**, or an operation-scoped persistent choice
 offered by the provider. Unanswered requests are denied after 60 seconds.
 
-If a task stops because its CLI needs authentication, open a terminal, sign in
-with the provider's normal CLI flow, then return to the task and select
-**Resume**.
+If a task stops because its CLI is signed out, the task says so and offers a
+terminal running that CLI's own sign-in command — `claude auth login`,
+`codex login`, `grok login`, or `opencode auth login`. Sign in there, then
+return to the task and select **Resume**. ködade never sees or stores the
+credential.
 
 ## Review file output
 

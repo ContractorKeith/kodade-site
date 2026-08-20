@@ -4,7 +4,9 @@
 
 ködade is a desktop Agentic Development Environment. It brings agent chats,
 project folders, real terminal sessions, files, and the agent CLIs you already
-use into one workspace.
+use into one workspace. It opens on the tabbed workspace — Agents, Code, and
+Editor tabs over one persistent sidebar — with the classic 1.x layout one click
+away for one more release.
 
 ködade is [open source under Apache License
 2.0](trust/open-source.md). The macOS app is available now from
@@ -26,7 +28,8 @@ sign in to agent providers for you.
 ## Learn the core workflow
 
 - [Projects and workspace layout](core/projects.md) explains project switching,
-  pane layouts, sidebar modes, colors, and local persistence.
+  the tabbed workspace and the classic-layout escape hatch, sidebar modes,
+  colors, and local persistence.
 - [KödChat](core/kodchat.md) covers provider, model, access, attachments, and
   local transcript storage.
 - [Terminal sessions](core/terminal-sessions.md) covers creating, naming,
@@ -36,10 +39,15 @@ sign in to agent providers for you.
 
 ## Beyond the core workspace
 
+- [Agents tab](features/agents.md) builds reusable agent personas and prepares
+  runs from them as KödWork background tasks.
+- [Connections](features/connections.md) attach MCP servers to a persona from a
+  curated catalog or a custom server, bring-your-own-key and reviewed on
+  install.
 - [KödWork](features/kodwork.md) runs durable background tasks and holds their
   progress, permission requests, and file output for review.
-- [KödHarness](features/kodharness.md) shows what an agent CLI will read before
-  it runs.
+- [KödHarness](features/kodharness.md) installs skills and merges MCP servers
+  through reviewed, preview-then-apply changes.
 - [Köd Workspace and KödMem](features/kodmem.md) keep activity and durable
   project memory visible and local.
 - [KödMCP](features/kodmcp.md) gives agent tools controlled access to KödMem.

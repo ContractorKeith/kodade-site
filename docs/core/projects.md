@@ -19,21 +19,35 @@ project to show or hide its chat threads, then select a thread to activate that
 project and conversation. Live terminal workspaces appear below the project
 list.
 
-## Arrange the workspace
+## Work in the tabbed workspace
 
-The desktop workspace has four panes from left to right:
+ködade opens on the tabbed workspace. One persistent sidebar stays on the left
+while the title bar switches between three tabs:
 
-1. projects
-2. KödChat or terminal
-3. editor
-4. files
+- **Agents** — reusable agent personas and the runs prepared from them. See
+  [Agents tab](../features/agents.md).
+- **Code** — the project's terminal sessions, KödChat threads, and workspace
+  tools.
+- **Editor** — files and the editor.
 
-Drag a separator to resize adjacent panes. The projects, editor, and files panes
-can collapse; the KödChat or terminal pane remains the central work area.
-Double-click a separator to return it to its default position.
+A tab you have opened keeps running in the background, so switching away from a
+terminal or an agent never interrupts it. Upgrading from 1.x carries your work
+over: the sidebar width you already chose becomes the tabbed layout's, and your
+projects, open files, and sessions are where you left them.
 
-Pane sizes and collapsed states are stored per project. Switching projects can
-therefore restore a different layout for each folder.
+### Switch back to the classic layout
+
+If you would rather keep the four-pane layout from 1.x, the title-bar button to
+the left of the workspace actions switches back to the classic layout at any
+time, and that choice sticks across restarts.
+
+The classic layout arranges four panes from left to right — projects, KödChat or
+terminal, editor, files. Drag a separator to resize adjacent panes; the
+projects, editor, and files panes can collapse while the KödChat or terminal
+pane stays the central work area, and double-clicking a separator returns it to
+its default position. Pane sizes and collapsed states are stored per project.
+
+The classic layout stays available for one more release.
 
 ## Choose a sidebar mode
 

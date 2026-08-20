@@ -160,25 +160,14 @@ The unsaved buffer remains in memory. Read the error, confirm the file and its
 parent folder still exist and are writable, fix the permission or path problem,
 then save again.
 
-## A browser page or action does not work
+## The in-app browser is gone
 
-**Symptom:** the URL is rejected.
+**Symptom:** the browser tab, its title-bar action, or its commands are missing.
 
-Enter an HTTP or HTTPS address. A bare hostname such as `example.com` becomes
-HTTPS. `file:`, `data:`, `javascript:`, custom-scheme, and hostless URLs are not
-supported.
-
-**Symptom:** a download, sign-in popup, or new window does nothing.
-
-The embedded browser blocks downloads and popup or new-window requests. Open the
-site in your normal browser for a flow that requires one of them, then return to
-ködade. The embedded browser is currently macOS-only.
-
-**Symptom:** a local development site does not load.
-
-Confirm its server is running in a terminal, then enter the full address, for
-example `http://localhost:3000`. Use the browser's **reload** button after the
-server starts. See [Browser tab](../workspace/browser.md).
+The embedded browser pane is archived in 2.0.0 and is not part of public
+release builds. Chat links and GitHub items open in your system browser
+instead. Open a web page or a local development site there. See [Embedded
+browser (archived)](../workspace/browser.md).
 
 ## Unsaved changes disappeared after restart
 

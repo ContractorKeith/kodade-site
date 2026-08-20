@@ -2,8 +2,7 @@
 
 ködade is a local desktop workspace around real development tools. It adds
 specific checks around file-manager actions, document previews, GitHub commands,
-rendered Markdown, and the embedded browser. It is not a sandbox for your shell
-or agent CLIs.
+and rendered Markdown. It is not a sandbox for your shell or agent CLIs.
 
 ## The project boundary
 
@@ -54,21 +53,12 @@ cannot create, edit, merge, close, or delete GitHub resources. Selecting an
 issue or pull request opens its HTTPS page. Authentication and network access
 remain owned by `gh`. See [GitHub issues and pull requests](../workspace/github.md).
 
-## Embedded browser
+## Embedded browser (archived)
 
-The embedded browser is a separate native child webview on macOS. Remote pages
-do not receive ködade's app IPC bridge: the child has no app command handler,
-removes the webview IPC wrapper before the first page loads, and does not
-register ködade's custom document scheme.
-
-Navigation is limited to HTTP and HTTPS. Downloads and popup or new-window
-requests are denied.
-
-Those controls isolate websites from ködade commands; they do not make a website
-trusted or private. A loaded page can make ordinary web requests and process
-anything you enter into it. Check the real hostname in the URL field, especially
-when a URL contains an `@` character, and avoid entering secrets into sites you
-do not trust. See [Browser tab](../workspace/browser.md).
+The embedded browser pane is archived in 2.0.0 and is not part of public
+release builds, so it no longer presents a browser surface to secure. Chat
+links and GitHub items open in your system browser, under that browser's own
+trust model. See [Embedded browser (archived)](../workspace/browser.md).
 
 ## Rendered Markdown
 
