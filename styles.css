@@ -719,6 +719,14 @@ h1 {
   margin-bottom: 0;
 }
 
+.agent-strip .section-lede {
+  color: var(--ink-500);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 14px;
+  max-width: 46ch;
+}
+
 .agent-list {
   display: flex;
   flex-wrap: wrap;

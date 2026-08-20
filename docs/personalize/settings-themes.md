@@ -36,4 +36,21 @@ Select an installed provider to start it in a new terminal for the active
 project. This does not inspect its account, choose a model, or authenticate it
 for you. Complete the CLI's own authentication in that terminal.
 
+Signing an agent CLI in also lives in the surface where it fails: when a
+KödChat turn or a [KödWork](../features/kodwork.md) task stops because the CLI
+is signed out, that thread or task offers a terminal running the CLI's own
+sign-in command, so you no longer have to route through settings to get working
+again. Providers keeps the same sign-in shortcut, plus which CLIs are detected
+and at what version, where to install a missing one, and which provider a new
+chat starts on. Ködade never sees or stores the credential.
+
+## Adjust the background prompt
+
+Agents ködade starts in chat and KödWork receive a short, token-lean background
+note that they are running inside ködade, so answers render well in the chat
+and terminal panes. It is on by default. **settings > advanced > KödHarness**
+shows the exact text, lets you rewrite it, and switches it off entirely. The
+note is sent only to sessions ködade launches — it is never written to
+`CLAUDE.md`, `AGENTS.md`, or any other file on disk.
+
 For keyboard controls, see [Keyboard shortcuts](keyboard-shortcuts.md).

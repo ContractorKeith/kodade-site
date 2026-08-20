@@ -24,8 +24,10 @@ class PublicReleaseDirectionTests(unittest.TestCase):
             "windows is not included in this release",
             "linux is planned",
             "https://github.com/kodade/kodade/releases",
-            "https://github.com/kodade/kodade/releases/download/v1.7.0/kodade_1.7.0_aarch64.dmg",
-            "the public release includes ködwork background tasks and ködpr review",
+            "https://github.com/kodade/kodade/releases/download/v2.0.0/kodade_2.0.0_aarch64.dmg",
+            "the tabbed workspace",
+            "the agents tab",
+            "ködwork background tasks and ködpr review",
             '<meta name="twitter:site" content="@kodadeapp">',
             '<a href="https://github.com/kodade/kodade">github</a>',
             '<a href="https://x.com/kodadeapp" rel="me" '
