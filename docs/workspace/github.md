@@ -57,5 +57,5 @@ configuration.
 - An error inside one list — run the equivalent `gh issue list` or `gh pr list`
   command in a terminal to inspect the CLI error, then refresh.
 
-Use the [embedded browser](browser.md) for general HTTP(S) pages. Its security
-boundary is separate from the authenticated `gh` integration.
+Selecting an issue or pull request opens its page in your system browser; the
+in-app [embedded browser](browser.md) was archived in 2.0.0.

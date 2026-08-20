@@ -18,7 +18,7 @@ no shortcut editor in **settings**.
 
 **Command-T** opens a terminal in the active project. Session and project
 shortcuts wrap from the last item to the first. **Command-W** closes the active
-editor, GitHub, or browser tab; if no tab is active, it does nothing.
+editor or GitHub tab; if no tab is active, it does nothing.
 
 ## When a terminal has focus
 

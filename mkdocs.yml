@@ -41,7 +41,7 @@ nav:
       - Edit and save files: workspace/editor.md
       - Preview files: workspace/previews.md
       - View GitHub work: workspace/github.md
-      - Use the embedded browser: workspace/browser.md
+      - Embedded browser (archived): workspace/browser.md
   - Agent workspace:
       - Agents tab: features/agents.md
       - Connections: features/connections.md

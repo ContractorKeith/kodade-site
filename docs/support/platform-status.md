@@ -49,6 +49,7 @@ from public release builds:
 | KödSSH | In development |
 | KödWhisper | In development |
 | KödLocal | In development |
+| Embedded browser pane | Archived in 2.0.0; compiled out of public builds, kept in source and may return |
 | KödWeb | Discontinued; no longer under development |
 
 These are not usable public features. KödWork and KödPR are included in the

@@ -22,8 +22,7 @@ The file can contain:
 - the last active project
 - per-project pane sizes and collapsed states
 - the selected theme and projects-sidebar mode
-- per-project open-tab metadata, including file paths, the GitHub tab, and an
-  embedded browser tab's last URL
+- per-project open-tab metadata, including file paths and the GitHub tab
 - chat-thread identity and terminal-session identity
 
 `kodade.json` is workspace metadata, not a copy of your projects. Your source
@@ -33,12 +32,11 @@ KödChat stores one transcript document per thread under the app-data `chats/`
 directory. KödMem uses a local SQLite database and, when enabled for a project,
 human-readable files under that project's `.kodade/memory/` directory.
 
-!!! note "Paths and browser URLs are local data too"
+!!! note "Paths are local data too"
 
-    The metadata file can reveal folder names, absolute paths, and a previously
-    open browser URL to anyone who can read your macOS account's files. Treat it
-    with the same care as other local application data when sharing diagnostics
-    or backups.
+    The metadata file can reveal folder names and absolute paths to anyone who
+    can read your macOS account's files. Treat it with the same care as other
+    local application data when sharing diagnostics or backups.
 
 ## What does not persist
 
@@ -92,7 +90,6 @@ you use a network-capable tool:
 | --- | --- |
 | Run an agent in a terminal | The CLI and any command it launches |
 | Open the GitHub view | Your authenticated `gh` CLI |
-| Open an embedded browser tab | The loaded website and its resources |
 | Click an absolute link in a Markdown preview | Your default system browser |
 
 Opening a Markdown file does not automatically fetch its remote images. Remote
